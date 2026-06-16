@@ -1,0 +1,11 @@
+# Fichiers système (macOS / Windows)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Réglages d'éditeur (facultatif)
+.vscode/
+
+# Fichiers temporaires
+*.tmp
+*~
