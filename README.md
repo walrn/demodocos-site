@@ -23,7 +23,7 @@ Site trilingue : grec · anglais · français.
 - Tout le texte des trois langues est regroupé dans un objet **`ZONE À MODIFIER`**
   en haut de `index.html` — c'est la seule partie à éditer pour changer le contenu.
 
-## Mettre à jour le contenu (Cécile)
+## Mettre à jour le contenu (Cécile et Christophe)
 
 1. Ouvrir `index.html` sur GitHub, cliquer sur l'icône crayon pour passer en
    édition.
@@ -39,6 +39,6 @@ continu à chaque push sur `main`.
 
 ## Rôles
 
-- **Cécile** — contenu, via l'éditeur web GitHub.
-- **Christophe** — co-gérant.
-- **Jean** — coordination du projet et du site.
+- **Cécile** — boss lady.
+- **Christophe** — stratégie.
+- **Walr** — coordination du site.
