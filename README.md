@@ -1,75 +1,44 @@
-# Demodocos Books — site web
+# Demodocos Books — Δημόδοκος Βιβλία
 
-Site vitrine de la librairie **Demodocos Books / Δημόδοκος Βιβλία**, sur l'île d'Ios (Cyclades).
-Une seule page, trilingue (grec · anglais · français), sans étape de construction :
-le fichier `index.html` se suffit à lui-même.
+Site vitrine de **Demodocos Books**, librairie-café sur l'île d'Ios, tenue par
+Cécile et Christophe. Le nom rend hommage à Démodocos, l'aède aveugle de
+l'*Odyssée* dont le chant fait pleurer Ulysse.
 
----
+**En ligne :** https://demodocos-books.netlify.app
+Site trilingue : grec · anglais · français.
 
-## Contenu du dossier
+## Identité de marque
 
-```
-demodocos-site/
-├── index.html      ← le site entier (à ouvrir d'un double-clic dans un navigateur)
-├── assets/         ← les images (photos de la librairie, etc.)
-├── .gitignore      ← liste des fichiers techniques à ne pas archiver
-└── README.md       ← ce fichier
-```
+- **Couleur :** cobalt `#104898` (extrait du logo).
+- **Typographie :** Playfair Display (titres), Cormorant Garamond (corps).
+- **Élément signature :** le porteur de rame (Ulysse portant sa rame vers
+  l'intérieur des terres).
+- **Motifs récurrents :** œil, lyre, amphore, chat.
 
----
+## Structure technique
 
-## Modifier les textes
+- Un seul fichier `index.html`, autonome, **sans outil de build**.
+- `index-v1.html` : ancienne version (sans photos), conservée comme archive.
+- Photos dans `assets/` ; favicons à la racine.
+- Tout le texte des trois langues est regroupé dans un objet **`ZONE À MODIFIER`**
+  en haut de `index.html` — c'est la seule partie à éditer pour changer le contenu.
 
-Tout le texte du site vit dans **un seul endroit** : en haut de `index.html`, dans le bloc
-encadré par les commentaires `ZONE À MODIFIER` … `FIN DE LA ZONE À MODIFIER`.
+## Mettre à jour le contenu (Cécile)
 
-Chaque ligne donne les trois langues côte à côte :
+1. Ouvrir `index.html` sur GitHub, cliquer sur l'icône crayon pour passer en
+   édition.
+2. Modifier **uniquement le texte situé à l'intérieur de la `ZONE À MODIFIER`** —
+   ne pas toucher au code en dessous.
+3. Enregistrer (bouton « Commit changes »).
+4. Netlify republie le site automatiquement, en une à deux minutes.
 
-```js
-card_cafe_b: { el:"Έναν καφέ…", en:"A coffee, a chair…", fr:"Un café, une chaise…" }
-```
+## Déploiement
 
-- On ne change que le texte **entre les guillemets** `" "`.
-- Les éléments marqués `[ À COMPLÉTER ]` attendent une information (adresse, horaires, saison).
-- On ne touche jamais au reste du fichier (le design est ailleurs et reste stable).
+Git → GitHub (`walrn/demodocos-site`, branche `main`) → Netlify, déploiement
+continu à chaque push sur `main`.
 
-Après modification : enregistrer le fichier, puis le rouvrir dans le navigateur pour vérifier.
+## Rôles
 
----
-
-## Ajouter des photos
-
-1. Déposer les images dans le dossier `assets/` (par ex. `assets/devanture.jpg`).
-2. Les relier au site se fait dans `index.html` — la marche à suivre sera ajoutée au moment
-   où les photos seront intégrées.
-
-Conseil : viser des images de moins de ~300 Ko chacune pour garder le site rapide.
-
----
-
-## Mettre en ligne (gratuit)
-
-Hébergement recommandé : **Netlify**.
-
-- Première mise en ligne : déposer ce dossier sur https://app.netlify.com/drop
-- Pour conserver le site : créer un compte gratuit et le « réclamer » (sinon il s'efface après 1 h).
-- Mises à jour : redéposer le dossier dans l'onglet *Deploys*, ou — si le dépôt est sur GitHub —
-  connecter Netlify au dépôt pour que chaque modification se publie automatiquement.
-
----
-
-## Archiver avec Git (sauvegarde + historique)
-
-Ce dossier est prévu pour être suivi par Git. Démarche dans VS Code :
-
-1. Ouvrir ce dossier (`Fichier > Ouvrir le dossier…`).
-2. Vue **Source Control** (Contrôle de code source) → **Initialiser le dépôt**.
-3. Saisir un message (ex. « Première version du site ») → **Valider** (commit).
-4. **Publier sur GitHub** pour créer la sauvegarde en ligne.
-
-Ensuite, après chaque modification : un message de commit + un *push*, et tout est historisé.
-On peut revenir à n'importe quelle version précédente.
-
----
-
-*Δημόδοκος Βιβλία · Demodocos Books · Ios · Cyclades*
+- **Cécile** — contenu, via l'éditeur web GitHub.
+- **Christophe** — co-gérant.
+- **Jean** — coordination du projet et du site.
