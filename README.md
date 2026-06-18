@@ -41,4 +41,4 @@ continu à chaque push sur `main`.
 
 - **Cécile** — boss lady.
 - **Christophe** — stratégie.
-- **Walr** — coordination du site.
+- **Walrn** — coordination du site.
