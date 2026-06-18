@@ -69,7 +69,7 @@ const CONTENT = {
   card_island_b:  {
     el:"Ταξιδιωτικοί οδηγοί, σημειωματάρια και αναγνώσματα των νησιών του Αιγαίου για το ταξίδι προς τη δική σας Ιθάκη.",
     en:"Travel guides, notebooks and some Aegean islands reading for the journey to your own Ithaka.",
-    fr:"Des livrets de voyage, des carnets de notes et des lectures égéennes pour vous guider le chemin de votre propre Ithaque." },
+    fr:"Des livrets de voyage, des carnets de notes et des lectures égéennes pour vous guider sur le chemin de votre propre Ithaque." },
 
   /* ----- Nous trouver ----- */
   find_label:     { el:"Επίσκεψη", en:"Visit", fr:"Venir" },
@@ -1039,7 +1039,7 @@ const DEFAULT_LANG = "en";
         </div>
         <p class="find-body" data-i18n="find_body"></p>
         <div class="info">
-          <div class="row"><span class="k" data-i18n="find_addr_label"></span><span class="v" data-i18n="find_addr"></span></div>
+          <div class="row"><span class="k" data-i18n="find_addr_label"></span><span class="v"><span data-i18n="find_addr"></span> · <a class="map-btn" id="map" target="_blank" rel="noopener"><span data-i18n="find_map"></span></a></span></div>
           <div class="row"><span class="k" data-i18n="find_hours_label"></span><span class="v" data-i18n="find_hours"></span></div>
           <div class="row"><span class="k" data-i18n="find_phone_label"></span><span class="v"><a id="phone-link" href="#"></a></span></div>
         </div>
@@ -1047,7 +1047,6 @@ const DEFAULT_LANG = "en";
           <a class="insta-btn" id="insta" target="_blank" rel="noopener">
             <svg><use href="#i-insta"/></svg><span data-i18n="find_insta"></span>
           </a>
-          <a class="map-btn" id="map" target="_blank" rel="noopener"><span data-i18n="find_map"></span></a>
         </div>
       </div>
       <div class="door-stage reveal" aria-hidden="true">
