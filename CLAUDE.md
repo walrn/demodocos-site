@@ -12,9 +12,9 @@ Contexte complet, identité de marque et procédure de mise à jour du contenu :
 
 1. **Esthétique minimale.** Moins de photos, mises en page épurées, aucun
    élément superflu. En cas de doute, retirer plutôt qu'ajouter.
-2. **Séparation contenu / code.** La `ZONE À MODIFIER` (en haut de
-   `index.html`) doit rester éditable par une personne non technique. Toute
-   évolution la préserve.
+2. **Séparation contenu / code.** La `ZONE À MODIFIER` (en haut de chaque page)
+   doit rester éditable par une personne non technique. Toute évolution la
+   préserve.
 3. **Vérifier avant de livrer.** Tout correctif de mise en page est validé
    avec Playwright/Chromium à plusieurs breakpoints AVANT livraison — jamais
    « à l'aveugle ».
@@ -23,16 +23,21 @@ Contexte complet, identité de marque et procédure de mise à jour du contenu :
 
 ## Repères techniques
 
-- **Un seul fichier livré : `index.html`** (autonome, sans build). `index-v1.html`
-  est une ancienne version archivée — ne pas l'éditer, ce n'est pas le site en ligne.
-- **Contenu = objet `CONTENT`** dans la `ZONE À MODIFIER`. Chaque entrée a trois
-  langues `el` / `en` / `fr` : les modifier ensemble pour rester cohérent.
+- **Site statique multi-pages, sans build.** `index.html` (accueil) +
+  `books.html` / `coffee.html` / `road.html` (rubriques détaillées, liées depuis
+  les cartes de l'accueil). Design dans `styles.css`, logique commune dans
+  `site.js`, partagés par toutes les pages. `index-v1.html` est une archive — ne
+  pas l'éditer.
+- **Contenu = objet `CONTENT`** dans la `ZONE À MODIFIER`, propre à **chaque page**.
+  Chaque entrée a trois langues `el` / `en` / `fr` : les modifier ensemble.
+- **Langue mémorisée** via `localStorage` (`site.js`) : le choix EL/EN/FR suit
+  d'une page à l'autre.
 - **Gros SVG du porteur de rame** au milieu d'`index.html` (centaines de lignes de
   coordonnées) : localiser le code avec `grep`, ne pas relire tout le fichier.
 - **Fichiers statiques :** photos dans `assets/` ; favicons (`favicon.svg`,
   `favicon.ico`, `apple-touch-icon.png`) à la racine.
 - **Déploiement :** `git push origin main` → Netlify republie tout seul
-  (https://demodocos-books.netlify.app), en ~1–2 min.
+  (https://demodocos-books.eu), en ~1–2 min.
 - **Piège CSS connu :** un élément qui combine `.wrap` avec une autre classe ne doit
   pas utiliser le raccourci `padding:` — il écrase le padding horizontal de `.wrap`.
   Utiliser `padding-top` / `padding-bottom`.
@@ -47,3 +52,14 @@ Contexte complet, identité de marque et procédure de mise à jour du contenu :
   (Livres, Café, Pour la route). Toute nouvelle accroche suit cette règle.
 - **Les paragraphes plus longs gardent leur point** : « Le nom » (`name_body`),
   citation d'Homère, « Nous trouver » (`find_body`), tagline du pied de page.
+
+## Infrastructure (externe — ne pas modifier depuis le code)
+
+- **Domaine `demodocos-books.eu`** chez **OVH** (titulaire : « Agora & Demodocos
+  Ios - Coffee & Books I.K.E. »).
+- **DNS chez OVH** (non délégué à Netlify) : apex `A 75.2.60.5` + `www CNAME`
+  vers `demodocos-books.netlify.app`. **Domaine principal Netlify = l'apex**
+  (sans `www`) → le `href` canonical et les `og:url` doivent pointer sur l'apex.
+- **Email :** redirection OVH `contact@demodocos-books.eu` → Gmail (réception
+  seule). Ne pas afficher `contact@…` dans le contenu tant que la redirection
+  n'est pas confirmée (décision de contenu pour Cécile, dans la `ZONE À MODIFIER`).
