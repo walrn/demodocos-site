@@ -83,6 +83,7 @@ const CONTENT = {
   find_hours_label:{ el:"Ώρες", en:"Hours", fr:"Horaires" },
   find_hours:     { el:"Τρί–Κυρ 10:30–13:30 & 18:30–23:30 · Δευτέρα κλειστά", en:"Tue–Sun 10:30–13:30 & 18:30–23:30 · Closed Mondays", fr:"Mar–Dim 10h30–13h30 & 18h30–23h30 · Fermé le lundi" },
   find_phone_label:{ el:"Τηλέφωνο", en:"Phone", fr:"Téléphone" },
+  find_email_label:{ el:"Email", en:"Email", fr:"E-mail" },
   find_map:       { el:"Δείτε στον χάρτη", en:"View on the map", fr:"Voir sur la carte" },
   find_insta:     { el:"Ακολουθήστε μας στο Instagram", en:"Follow us on Instagram", fr:"Suivez-nous sur Instagram" },
 
@@ -93,8 +94,9 @@ const CONTENT = {
 /* ----- Lien Instagram (à laisser ou à mettre à jour) ----- */
 const INSTAGRAM_URL = "https://www.instagram.com/demodocos.books.ios/";
 
-/* ----- Téléphone et lien Google Maps ----- */
+/* ----- Téléphone, e-mail et lien Google Maps ----- */
 const PHONE = "+30 697 284 8839";
+const EMAIL = "demodocosbooks.ios@gmail.com";
 const MAPS_URL = "https://maps.app.goo.gl/Qtx7cTPL627Jr9NU8";
 
 /* ----- Langue affichée à l'arrivée : "en", "fr" ou "el" ----- */
@@ -1042,6 +1044,7 @@ const DEFAULT_LANG = "en";
           <div class="row"><span class="k" data-i18n="find_addr_label"></span><span class="v"><span data-i18n="find_addr"></span> · <a class="map-btn" id="map" target="_blank" rel="noopener"><span data-i18n="find_map"></span></a></span></div>
           <div class="row"><span class="k" data-i18n="find_hours_label"></span><span class="v" data-i18n="find_hours"></span></div>
           <div class="row"><span class="k" data-i18n="find_phone_label"></span><span class="v"><a id="phone-link" href="#"></a></span></div>
+          <div class="row"><span class="k" data-i18n="find_email_label"></span><span class="v"><a id="email-link" href="#"></a></span></div>
         </div>
         <div class="find-actions">
           <a class="insta-btn" id="insta" target="_blank" rel="noopener">
@@ -1103,6 +1106,9 @@ const DEFAULT_LANG = "en";
   const phoneLink = document.getElementById("phone-link");
   phoneLink.textContent = PHONE;
   phoneLink.href = "tel:" + PHONE.replace(/\s/g, "");
+  const emailLink = document.getElementById("email-link");
+  emailLink.textContent = EMAIL;
+  emailLink.href = "mailto:" + EMAIL;
   document.getElementById("map").href = MAPS_URL;
 
   render();
