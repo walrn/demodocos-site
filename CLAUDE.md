@@ -36,3 +36,14 @@ Contexte complet, identité de marque et procédure de mise à jour du contenu :
 - **Piège CSS connu :** un élément qui combine `.wrap` avec une autre classe ne doit
   pas utiliser le raccourci `padding:` — il écrase le padding horizontal de `.wrap`.
   Utiliser `padding-top` / `padding-bottom`.
+- **Des éditions arrivent directement sur GitHub** (Cécile / Christophe via l'éditeur
+  web). Toujours faire `git fetch` / `git pull --rebase` avant de commiter, pour
+  éviter les collisions de push.
+
+## Conventions éditoriales (style Christophe)
+
+- **Pas de point final** sur les textes courts d'accroche, dans les trois langues :
+  l'épigraphe d'accueil (Cavafy) et les descriptions des cartes de « La librairie »
+  (Livres, Café, Pour la route). Toute nouvelle accroche suit cette règle.
+- **Les paragraphes plus longs gardent leur point** : « Le nom » (`name_body`),
+  citation d'Homère, « Nous trouver » (`find_body`), tagline du pied de page.
