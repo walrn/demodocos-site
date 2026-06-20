@@ -22,7 +22,6 @@ Site trilingue : grec · anglais · français.
   (rubriques détaillées, atteintes depuis les cartes de l'accueil).
 - Design et logique mutualisés : `styles.css` et `site.js`, partagés par toutes
   les pages.
-- `index-v1.html` : ancienne version (sans photos), conservée comme archive.
 - Photos dans `assets/` ; favicons à la racine.
 - Le texte des trois langues vit dans un objet **`ZONE À MODIFIER`** en haut de
   **chaque page** — c'est la seule partie à éditer pour changer le contenu.

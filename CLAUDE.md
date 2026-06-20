@@ -26,8 +26,7 @@ Contexte complet, identité de marque et procédure de mise à jour du contenu :
 - **Site statique multi-pages, sans build.** `index.html` (accueil) +
   `books.html` / `coffee.html` / `road.html` (rubriques détaillées, liées depuis
   les cartes de l'accueil). Design dans `styles.css`, logique commune dans
-  `site.js`, partagés par toutes les pages. `index-v1.html` est une archive — ne
-  pas l'éditer.
+  `site.js`, partagés par toutes les pages.
 - **Contenu = objet `CONTENT`** dans la `ZONE À MODIFIER`, propre à **chaque page**.
   Chaque entrée a trois langues `el` / `en` / `fr` : les modifier ensemble.
 - **Langue mémorisée** via `localStorage` (`site.js`) : le choix EL/EN/FR suit
