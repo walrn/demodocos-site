@@ -48,6 +48,10 @@ Contexte complet, identité de marque et procédure de mise à jour du contenu :
   coordonnées) : localiser le code avec `grep`, ne pas relire tout le fichier.
 - **Fichiers statiques :** photos dans `assets/` ; favicons (`favicon.svg`,
   `favicon.ico`, `apple-touch-icon.png`) à la racine.
+- **Illustrations dessinées du moodboard :** `assets/*-demodocos.png` (œil, livre,
+  lyre, porte, chat, table) — détourées sur fond transparent, réutilisables.
+  Catalogue + source + méthode d'extraction : `assets/ILLUSTRATIONS.md`. La source
+  (`work-local/Demodocos_Idées.pdf`) est **gitignorée** (locale), à sauvegarder à part.
 - **Déploiement :** `git push origin main` → **GitHub Pages** republie tout seul
   (https://demodocos-books.eu), en ~1 min. Gratuit, non métré, sans build. Les
   fichiers `CNAME` (domaine custom) et `.nojekyll` (servir tel quel) à la racine
