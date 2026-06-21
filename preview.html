@@ -3,16 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Demodocos Books · Ios</title>
+<title>Demodocos Books · Ios — preview</title>
+<meta name="robots" content="noindex"><!-- page de test : ne pas indexer -->
 <meta name="description" content="Demodocos Books — a small bookshop & café on the island of Ios, Cyclades.">
-<link rel="canonical" href="https://demodocos-books.eu/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://demodocos-books.eu/">
 <meta property="og:title" content="Demodocos Books · Ios">
 <meta property="og:description" content="Demodocos Books — a small bookshop & café on the island of Ios, Cyclades.">
 <meta property="og:image" content="https://demodocos-books.eu/assets/accueil.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://demodocos-books.eu/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -118,6 +116,8 @@ const DEFAULT_LANG = "en";
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- Repère page de test — retirer cette ligne pour une démo "propre" -->
+<div style="position:fixed;bottom:12px;right:12px;z-index:9999;pointer-events:none;background:#104898;color:#fff;font:600 11px/1 system-ui,sans-serif;letter-spacing:.14em;padding:7px 11px;border-radius:3px;opacity:.85">PAGE DE TEST</div>
 
 <!-- jeu d'icônes (réutilisées par <use>) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -846,18 +846,21 @@ const DEFAULT_LANG = "en";
         <h2 data-i18n="shop_title"></h2>
       </div>
       <div class="cards reveal">
-        <div class="card">
+        <a class="card" href="books.html">
           <svg class="ic" viewBox="0 0 64 50"><use href="#i-book"/></svg>
           <h3 data-i18n="card_books_t"></h3><p data-i18n="card_books_b"></p>
-        </div>
-        <div class="card">
+          <span class="more" data-i18n="card_more"></span>
+        </a>
+        <a class="card" href="coffee.html">
           <svg class="ic" viewBox="0 0 48 44"><use href="#i-cup"/></svg>
           <h3 data-i18n="card_cafe_t"></h3><p data-i18n="card_cafe_b"></p>
-        </div>
-        <div class="card">
+          <span class="more" data-i18n="card_more"></span>
+        </a>
+        <a class="card" href="road.html">
           <svg class="ic" viewBox="0 0 48 56"><use href="#i-lyre"/></svg>
           <h3 data-i18n="card_island_t"></h3><p data-i18n="card_island_b"></p>
-        </div>
+          <span class="more" data-i18n="card_more"></span>
+        </a>
       </div>
     </div>
   </section>

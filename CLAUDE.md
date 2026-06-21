@@ -24,9 +24,19 @@ Contexte complet, identité de marque et procédure de mise à jour du contenu :
 ## Repères techniques
 
 - **Site statique multi-pages, sans build.** `index.html` (accueil) +
-  `books.html` / `coffee.html` / `road.html` (rubriques détaillées, liées depuis
-  les cartes de l'accueil). Design dans `styles.css`, logique commune dans
-  `site.js`, partagés par toutes les pages.
+  `books.html` / `coffee.html` / `road.html` (rubriques détaillées). Design dans
+  `styles.css`, logique commune dans `site.js`, partagés par toutes les pages.
+- **Cartes de l'accueil sans liens (état actuel).** En attendant les images de
+  C&C, les 3 cartes de « La librairie » sont des `<div class="card">` non
+  cliquables (CTA « En savoir plus » retiré). Pour remettre les liens : repasser
+  en `<a class="card" href="…">` + `<span class="more" data-i18n="card_more">`,
+  et retirer le `noindex` des sous-pages concernées.
+- **`preview.html` = page de test (bac à sable), `noindex`, hors navigation
+  publique.** Copie de l'accueil avec les liens des cartes **actifs** + repère
+  « PAGE DE TEST » ; sert à essayer de nouvelles propositions de design. Accès
+  par URL directe seulement (`/preview.html`). ⚠️ C'est une **copie** : si le
+  contenu de `index.html` change, `preview.html` diverge — resynchroniser au
+  besoin. Quand un design est validé, le porter dans `index.html`.
 - **Contenu = objet `CONTENT`** dans la `ZONE À MODIFIER`, propre à **chaque page**.
   Chaque entrée a trois langues `el` / `en` / `fr` : les modifier ensemble.
 - **Langue mémorisée** via `localStorage` (`site.js`) : le choix EL/EN/FR suit
