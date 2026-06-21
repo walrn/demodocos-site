@@ -39,20 +39,26 @@ Site trilingue : grec · anglais · français.
 2. Modifier **uniquement le texte situé à l'intérieur de la `ZONE À MODIFIER`** —
    ne pas toucher au code en dessous.
 3. Enregistrer (bouton « Commit changes »).
-4. Netlify republie le site automatiquement, en une à deux minutes.
+4. GitHub Pages republie le site automatiquement, en ~1 minute.
 
 ## Déploiement
 
-Git → GitHub (`walrn/demodocos-site`, branche `main`) → Netlify, déploiement
-continu à chaque push sur `main`.
+Git → GitHub (`walrn/demodocos-site`, branche `main`) → **GitHub Pages**,
+déploiement continu à chaque push sur `main`. Hébergement gratuit et non métré,
+sans étape de build. Les fichiers `CNAME` (domaine custom) et `.nojekyll`
+(servir les fichiers tels quels) à la racine font partie de cette config — ne
+pas les supprimer.
 
 ## Infrastructure
 
+- **Hébergement :** **GitHub Pages** (repo `walrn/demodocos-site`, branche
+  `main`, racine `/`). HTTPS Let's Encrypt automatique + « Enforce HTTPS ».
+  *(Migré depuis Netlify — voir l'historique Git.)*
 - **Domaine :** `demodocos-books.eu`, registrar **OVH**. Titulaire = l'entité
   légale « Agora & Demodocos Ios - Coffee & Books I.K.E. ».
-- **DNS :** géré chez OVH (non délégué à Netlify) — apex `A 75.2.60.5` +
-  `www CNAME` vers Netlify. Domaine principal Netlify = l'apex (le `www` redirige
-  dessus). SSL Let's Encrypt automatique.
+- **DNS :** géré chez OVH (non délégué) — apex `A` vers les 4 IP GitHub Pages
+  (`185.199.108.153` à `185.199.111.153`) + `www CNAME` vers `walrn.github.io`.
+  Domaine principal = l'apex (le `www` redirige dessus).
 - **Email :** redirection gratuite OVH `contact@demodocos-books.eu` →
   `demodocosbooks.ios@gmail.com` (réception seule).
 

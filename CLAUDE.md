@@ -20,6 +20,9 @@ Contexte complet, identité de marque et procédure de mise à jour du contenu :
    « à l'aveugle ».
 4. **Source unique dans Git.** Les changements de design se génèrent dans le
    chat de design ; les opérations Git et déploiement se font dans Claude Code.
+5. **Prévenir avant toute indisponibilité.** Avant toute opération susceptible
+   d'interrompre ou de dégrader le site, prévenir explicitement l'utilisateur,
+   en indiquant l'impact attendu et la durée estimée, puis attendre son accord.
 
 ## Repères techniques
 
@@ -45,8 +48,10 @@ Contexte complet, identité de marque et procédure de mise à jour du contenu :
   coordonnées) : localiser le code avec `grep`, ne pas relire tout le fichier.
 - **Fichiers statiques :** photos dans `assets/` ; favicons (`favicon.svg`,
   `favicon.ico`, `apple-touch-icon.png`) à la racine.
-- **Déploiement :** `git push origin main` → Netlify republie tout seul
-  (https://demodocos-books.eu), en ~1–2 min.
+- **Déploiement :** `git push origin main` → **GitHub Pages** republie tout seul
+  (https://demodocos-books.eu), en ~1 min. Gratuit, non métré, sans build. Les
+  fichiers `CNAME` (domaine custom) et `.nojekyll` (servir tel quel) à la racine
+  font partie de la config Pages — ne pas les supprimer.
 - **Piège CSS connu :** un élément qui combine `.wrap` avec une autre classe ne doit
   pas utiliser le raccourci `padding:` — il écrase le padding horizontal de `.wrap`.
   Utiliser `padding-top` / `padding-bottom`.
@@ -66,9 +71,13 @@ Contexte complet, identité de marque et procédure de mise à jour du contenu :
 
 - **Domaine `demodocos-books.eu`** chez **OVH** (titulaire : « Agora & Demodocos
   Ios - Coffee & Books I.K.E. »).
-- **DNS chez OVH** (non délégué à Netlify) : apex `A 75.2.60.5` + `www CNAME`
-  vers `demodocos-books.netlify.app`. **Domaine principal Netlify = l'apex**
-  (sans `www`) → le `href` canonical et les `og:url` doivent pointer sur l'apex.
+- **Hébergement = GitHub Pages** (repo `walrn/demodocos-site`, branche `main`,
+  racine `/`). Migré depuis Netlify (qui n'est plus utilisé). HTTPS Let's Encrypt
+  auto + « Enforce HTTPS ».
+- **DNS chez OVH** (non délégué) : apex `A` → 4 IP GitHub Pages
+  (`185.199.108.153`…`185.199.111.153`) + `www CNAME` vers `walrn.github.io`.
+  **Domaine principal = l'apex** (sans `www`, le `www` redirige dessus) → le
+  `href` canonical et les `og:url` doivent pointer sur l'apex.
 - **Email :** redirection OVH `contact@demodocos-books.eu` → Gmail (réception
   seule). Ne pas afficher `contact@…` dans le contenu tant que la redirection
   n'est pas confirmée (décision de contenu pour Cécile, dans la `ZONE À MODIFIER`).
