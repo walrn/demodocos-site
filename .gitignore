@@ -9,3 +9,7 @@ desktop.ini
 # Fichiers temporaires
 *.tmp
 *~
+
+# Notes de travail internes (non publiées)
+AGENTS.md
+ARCHITECTURE.md
