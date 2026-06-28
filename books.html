@@ -20,11 +20,47 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Liste éditoriale « un livre = couverture + commentaire ».
+     (scopé à la page le temps de valider — à porter dans styles.css ensuite) */
+  .booklist{display:flex;flex-direction:column;gap:clamp(40px,6vw,72px);max-width:820px}
+  .bookrow{display:grid;grid-template-columns:170px 1fr;gap:clamp(22px,3.2vw,40px);align-items:start}
+  .bookrow .cover{margin:0}
+  .bookrow .cover .zoom{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;line-height:0}
+  .bookrow .cover img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--line)}
+  .bookrow .cover.is-fallback{display:flex;align-items:center;justify-content:center;
+    aspect-ratio:4/5;background:var(--wash);border:1px solid var(--line)}
+  .bookrow .cover.is-fallback img{width:46%;aspect-ratio:auto;border:0;object-fit:contain;opacity:.5}
+  .bookrow h3{font-size:1.5rem;line-height:1.16;margin:0}
+  .bookrow .byline{font-size:.95rem;color:var(--text);opacity:.8;margin:.35em 0 0;letter-spacing:.02em}
+  .bookrow .comment{margin-top:.95em}
+  .bookrow .comment p{font-size:1.12rem;line-height:1.56;margin:0 0 .7em;color:var(--text)}
+  .bookrow .comment p:last-child{margin-bottom:0}
+  @media(max-width:640px){
+    .bookrow{grid-template-columns:1fr;gap:16px}
+    .bookrow .cover{max-width:180px}
+  }
+</style>
 
-<!-- ════════════ ZONE À MODIFIER (textes de la page « Livres & cadeaux ») ════════════
-     4 livres : un titre + un pitch par livre, dans les 3 langues (el / en / fr).
-     Les photos vont dans assets/ : livre-1.jpg … livre-4.jpg
-     ══════════════════════════════════════════════════════════════════════════════ -->
+<!-- ════════════ ZONE À MODIFIER (page « Livres & cadeaux ») ════════════════════════
+     Deux choses à éditer ici :
+
+     1) Les TEXTES DE PAGE (bandeau du haut), dans les 3 langues (el / en / fr).
+
+     2) Les TROIS CATALOGUES de livres (LIVRES.el / .en / .fr) — UNE LISTE PAR LANGUE,
+        chacune avec autant de livres qu'on veut. Pour CHAQUE livre :
+            titre:  (obligatoire)
+            auteur: (facultatif)
+            photo:  (facultatif — fichier dans assets/, ex. photo: books/herodote.jpg)
+        Puis, EN DESSOUS, le COMMENTAIRE en texte libre (un ou plusieurs paragraphes,
+        séparés par une ligne vide). On met le livre sur la page de SA langue : pas de
+        traduction automatique.
+        On sépare deux livres par une ligne contenant seulement  ---
+        • Ajouter un livre  = recopier un bloc et changer le texte.
+        • Retirer un livre   = supprimer son bloc.
+        • Pas de photo ?    = enlever la ligne « photo: », une carte de repli s'affiche.
+        ⚠️ Ne pas toucher aux repères  el: `   en: `   fr: `   ni aux  ` (accent grave).
+     ═══════════════════════════════════════════════════════════════════════════════ -->
 <script>
 const CONTENT = {
   doc_title:   { el:"Βιβλία & δώρα · Δημόδοκος", en:"Books & Gifts · Demodocos", fr:"Livres et cadeaux · Demodocos" },
@@ -33,25 +69,104 @@ const CONTENT = {
   books_label: { el:"Διαλεχτά", en:"Hand-picked", fr:"Choisis à la main" },
   books_title: { el:"Βιβλία & δώρα", en:"Books & Gifts", fr:"Livres et cadeaux" },
   books_intro: {
-    el:"[ ΣΥΜΠΛΗΡΩΣΤΕ ]",
-    en:"[ TO COMPLETE ]",
-    fr:"Quelques livres qu'on aime, et de quoi les emporter — un mot sur chacun." },
-
-  sel_1_title:    { el:"[ ΣΥΜΠΛΗΡΩΣΤΕ ]", en:"[ TO COMPLETE ]", fr:"Titre du 1ᵉʳ livre" },
-  sel_1_accroche: { el:"[ ΣΥΜΠΛΗΡΩΣΤΕ ]", en:"[ TO COMPLETE ]", fr:"« Pitch à écrire. »" },
-
-  sel_2_title:    { el:"[ ΣΥΜΠΛΗΡΩΣΤΕ ]", en:"[ TO COMPLETE ]", fr:"Titre du 2ᵉ livre" },
-  sel_2_accroche: { el:"[ ΣΥΜΠΛΗΡΩΣΤΕ ]", en:"[ TO COMPLETE ]", fr:"« Pitch à écrire. »" },
-
-  sel_3_title:    { el:"[ ΣΥΜΠΛΗΡΩΣΤΕ ]", en:"[ TO COMPLETE ]", fr:"Titre du 3ᵉ livre" },
-  sel_3_accroche: { el:"[ ΣΥΜΠΛΗΡΩΣΤΕ ]", en:"[ TO COMPLETE ]", fr:"« Pitch à écrire. »" },
-
-  sel_4_title:    { el:"[ ΣΥΜΠΛΗΡΩΣΤΕ ]", en:"[ TO COMPLETE ]", fr:"Titre du 4ᵉ livre" },
-  sel_4_accroche: { el:"[ ΣΥΜΠΛΗΡΩΣΤΕ ]", en:"[ TO COMPLETE ]", fr:"« Pitch à écrire. »" },
+    el:"Μερικά βιβλία που αγαπάμε — δυο λόγια για το καθένα.",
+    en:"A few books we love — a word on each.",
+    fr:"Quelques livres qu'on aime — un mot sur chacun." },
 
   lightbox_close: { el:"Κλείσιμο", en:"Close", fr:"Fermer" },
   foot_tagline:   { el:"Ένα μικρό βιβλιοπωλείο στην Ίο", en:"A small bookshop on Ios", fr:"Une petite librairie à Ios" }
 };
+
+const LIVRES = {
+  el: `
+titre: Η ελληνική ιδιαιτερότητα
+auteur: Κορνήλιος Καστοριάδης
+photo: books/castoriadis-el.jpg
+
+Τι ήταν αυτό που γέννησε στην Ελλάδα αυτή την εκπληκτική περιπέτεια του πνεύματος, η οποία δίδαξε τους ανθρώπους να ερωτούν τον κόσμο αντί απλώς να τον αποδέχονται; Σε αυτό το θεμελιώδες αίνιγμα καταπιάνεται ο Καστοριάδης σε αυτό το συναρπαστικό και απαιτητικό σεμινάριο.
+
+Η Ελλάδα δεν είναι απλώς το λίκνο της Δύσης· είναι η επινόηση ενός νέου, οικουμενικού τρόπου σκέψης. Μέσα από τον Όμηρο, τον Ηράκλειτο και τους πρώτους Έλληνες στοχαστές, ο Καστοριάδης διερευνά τις προϋποθέσεις αυτής της πνευματικής τομής, η οποία δεν έχει ισοδύναμο στην ιστορία.
+
+Με τη γνώριμη πολυμάθειά του και την ελευθερία της σκέψης που τον διακρίνει, μακριά από τα στερεότυπα περί του «ελληνικού θαύματος», ο Καστοριάδης δείχνει πώς μια κοινωνία δημιούργησε η ίδια τους θεσμούς της, τους μύθους της και τον τρόπο με τον οποίο σκέπτεται. Μια υποδειγματική στοχαστική προσέγγιση πάνω στην ανάδυση της αυτονομίας.
+`,
+
+  en: `
+titre: Mes voyages avec Hérodote
+auteur: Ryszard Kapuściński
+photo: books/herodote.jpg
+
+Re-reading Herodotus's Inquiry while he travels to India, China, and Africa, the great Polish reporter invites us to transcend our cultural provincialism by reflecting on our relationship with the Other through the lens of History. This dialogue between the wisdom of ancient Greece and the diversity of today's multipolar world is a magnificent ode to curiosity and intellectual decentering.
+---
+titre: The Penelopiad
+auteur: Margaret Atwood
+
+In a retelling of The Odyssey that is both dazzling and ironic, Margaret Atwood allows Penelope and her twelve hanged maids to tell their side of the story. Speaking from the Underworld, her heroine re-examines the ancient myth in a masterful reflection on gender, truth, and justice. A remarkable and profoundly moving text.
+---
+titre: Circé
+auteur: Madeline Miller
+photo: books/circe.jpg
+
+Through luminous prose and a deeply human voice, Miller transforms an ancient myth into a powerful meditation on freedom, identity, and what it means to choose one's own destiny.
+
+Exiled to a lonely island, Circe gradually discovers that power will come not from divine privilege or magical abilities, but the struggle for female agency. Along the way she encounters figures such as Medea, Daedalus and of course Odysseus.
+
+Yet the novel's deepest subject is neither myth nor adventure. It is the struggle to become fully human in a world obsessed with power, status, and immortality. With remarkable elegance, Miller transforms an ancient myth into a philosophical reflection on freedom, solitude, love, and mortality. Like all Greek tragic figures, Circe asks a timeless question. Are we defined by our birth and destiny, or by the choices we make against them?
+---
+titre: An Odyssey, a father, a son, an epic
+auteur: Daniel Mendelsohn
+photo: books/odyssey-mendelsohn.jpg
+
+In An Odyssey, Daniel Mendelsohn shows how the greatest of Greek epics continues to illuminate the deepest questions of human life: identity, homecoming, mortality, and couple relationships.
+
+An academic seminar on Homer is transformed into a moving exploration of family, aging, memory, a fulfilling life. As father and son journey together through Odysseus' adventures, they also navigate their own complicated relationship. Part literary criticism, part travel narrative, part intimate memoir, An Odyssey reveals why Homer still speaks to us so intimately after nearly three millennia.
+---
+titre: Ancient Greece: a very short introduction
+auteur: Paul Cartledge
+photo: books/cartledge.jpg
+
+Through the concise tales of eleven major Greek cities, Cambridge Professor of Greek Culture Paul Cartledge explains the birth and the development of ancient civilization. Didactic History at its best!
+`,
+
+  fr: `
+titre: Mes voyages avec Hérodote
+auteur: Ryszard Kapuściński
+photo: books/herodote.jpg
+
+Relisant l'Enquête d'Hérodote pendant qu'il découvre l'Inde, la Chine et l'Afrique, le grand reporter polonais nous invite à dépasser nos provincialismes culturels en méditant sur le rapport à l'Autre à travers l'Histoire. Ce dialogue entre la sagesse de la Grèce antique et la diversité du monde multipolaire d'aujourd'hui est une ode magnifique à la curiosité et au décentrement intellectuel.
+---
+titre: The Penelopiad
+auteur: Margaret Atwood
+
+Dans une relecture de l'Odyssée aussi brillante qu'ironique, Margaret Atwood donne la parole à Pénélope et à ses douze servantes sacrifiées. Depuis les Enfers, notre héroïne revisite le mythe antique dans une réflexion magistrale sur le genre, la vérité et la justice. Un beau texte très émouvant !
+---
+titre: Ce qui fait la Grèce
+auteur: Cornelius Castoriadis
+photo: books/castoriadis-fr.jpg
+
+Qu'est-ce qui a fait naître en Grèce cette extraordinaire aventure de l'esprit qui a appris aux hommes à interroger le monde plutôt qu'à simplement l'accepter ? C'est à cette énigme fondatrice que s'attaque Castoriadis dans ce séminaire passionnant et exigeant.
+
+La Grèce n'est pas juste le berceau de l'Occident : elle est l'invention d'une nouvelle manière universelle de penser. À travers Homère, Héraclite et les premiers penseurs grecs, Castoriadis explore les conditions de cette rupture intellectuelle sans équivalent dans l'histoire.
+
+Avec son érudition et sa liberté de pensée habituelles, loin des clichés sur le « miracle grec », Castoriadis montre comment une société a créé elle-même ses institutions, ses mythes et sa manière de penser. Une réflexion magistrale sur l'émergence de l'autonomie.
+---
+titre: Les Origines de la Pensée Grecque
+auteur: Jean-Pierre Vernant
+photo: books/vernant.jpg
+
+Du mythos au logos !
+
+Dans ce texte lumineux, l'un des grands hellénistes français raconte une des aventures intellectuelles les plus décisives de notre histoire. Il explique comment l'émergence de la Cité amène une nouvelle manière d'appréhender le réel. Bâtie sur les ruines des palais mycéniens et du monde magique des héros d'Homère, c'est l'Agora qui permet à la Grèce ancienne d'inventer la pensée critique et l'esprit de contradiction. La naissance de la philosophie n'est pas loin !
+---
+titre: An Odyssey, a father, a son, an epic
+auteur: Daniel Mendelsohn
+photo: books/odyssey-mendelsohn.jpg
+
+Daniel Mendelsohn montre comment la plus grande des épopées grecques continue d'éclairer les questions les plus profondes de la vie humaine : l'identité, le retour sur soi, la mortalité et les relations de couple.
+
+Un séminaire académique sur Homère se transforme en une exploration émouvante de la famille, du vieillissement, de la mémoire et d'une vie épanouie. Un père et un fils débattent des aventures d'Ulysse et ce faisant naviguent en parallèle dans leur relation compliquée. Mélange de critique littéraire, de récit de voyage et de mémoires intimes, Une Odyssée révèle pourquoi Homère nous parle encore si intimement presque trois millénaires plus tard.
+`
+};
+
 const INSTAGRAM_URL = "https://www.instagram.com/demodocos.books.ios/";
 const DEFAULT_LANG = "en";
 </script>
@@ -85,41 +200,7 @@ const DEFAULT_LANG = "en";
         <h1 data-i18n="books_title"></h1>
         <p class="page-intro" data-i18n="books_intro"></p>
       </div>
-      <div class="gallery reveal">
-
-        <figure class="gitem">
-          <button type="button" class="zoom" data-zoom>
-            <img src="assets/livre-1.jpg" data-i18n-alt="sel_1_title" width="1200" height="1500" loading="lazy">
-          </button>
-          <h3 data-i18n="sel_1_title"></h3>
-          <p class="pitch" data-i18n="sel_1_accroche"></p>
-        </figure>
-
-        <figure class="gitem">
-          <button type="button" class="zoom" data-zoom>
-            <img src="assets/livre-2.jpg" data-i18n-alt="sel_2_title" width="1200" height="1500" loading="lazy">
-          </button>
-          <h3 data-i18n="sel_2_title"></h3>
-          <p class="pitch" data-i18n="sel_2_accroche"></p>
-        </figure>
-
-        <figure class="gitem">
-          <button type="button" class="zoom" data-zoom>
-            <img src="assets/livre-3.jpg" data-i18n-alt="sel_3_title" width="1200" height="1500" loading="lazy">
-          </button>
-          <h3 data-i18n="sel_3_title"></h3>
-          <p class="pitch" data-i18n="sel_3_accroche"></p>
-        </figure>
-
-        <figure class="gitem">
-          <button type="button" class="zoom" data-zoom>
-            <img src="assets/livre-4.jpg" data-i18n-alt="sel_4_title" width="1200" height="1500" loading="lazy">
-          </button>
-          <h3 data-i18n="sel_4_title"></h3>
-          <p class="pitch" data-i18n="sel_4_accroche"></p>
-        </figure>
-
-      </div>
+      <div class="booklist" id="catalog"><!-- rempli par le script ci-dessous --></div>
     </div>
   </section>
 </main>
@@ -140,5 +221,85 @@ const DEFAULT_LANG = "en";
 </div>
 
 <script src="site.js"></script>
+<script>
+/* Rendu du catalogue de livres (propre à cette page — ne touche pas à site.js partagé).
+   Lit la liste de la langue courante dans LIVRES, écrit les fiches, réagit au toggle EL/EN/FR.
+   La lightbox est ouverte par délégation ; sa fermeture est déjà gérée par site.js. */
+(function(){
+  "use strict";
+  const LANGS = ["el","en","fr"];
+  const ZOOM  = { el:"Μεγέθυνση", en:"Enlarge", fr:"Agrandir" };
+
+  function curLang(){
+    try { const s = localStorage.getItem("demodocos-lang"); if(LANGS.includes(s)) return s; } catch(e){}
+    const n = (navigator.language||"").slice(0,2).toLowerCase();
+    if(LANGS.includes(n)) return n;
+    return (typeof DEFAULT_LANG !== "undefined") ? DEFAULT_LANG : "en";
+  }
+  function esc(s){ return (s||"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+  function photoSrc(p){ return /^(https?:|\/)/.test(p) ? p : "assets/" + p; }
+
+  // Un bloc = champs « titre/auteur/photo » + le reste = commentaire (paragraphes séparés par une ligne vide).
+  function parseList(txt){
+    return (txt||"").split(/^\s*---\s*$/m).map(block => {
+      const o = { paras: [] };
+      const commentLines = [];
+      block.split(/\r?\n/).forEach(line => {
+        const m = line.match(/^\s*(titre|auteur|photo)\s*:\s*(.*)$/i);
+        if(m) o[m[1].toLowerCase()] = m[2].trim();
+        else commentLines.push(line);
+      });
+      o.paras = commentLines.join("\n").split(/\n\s*\n/).map(s => s.trim()).filter(Boolean);
+      return o;
+    }).filter(o => o.titre);
+  }
+
+  function row(b, lang){
+    const t = esc(b.titre), a = esc(b.auteur);
+    const cover = b.photo
+      ? '<div class="cover"><button type="button" class="zoom" data-zoom aria-label="' + esc(ZOOM[lang]) + ' : ' + t + '">'
+          + '<img src="' + esc(photoSrc(b.photo)) + '" alt="' + t + '" loading="lazy"></button></div>'
+      : '<div class="cover is-fallback" aria-hidden="true"><img src="assets/livre-demodocos.png" alt=""></div>';
+    const comment = b.paras.map(p => '<p>' + esc(p) + '</p>').join("");
+    return '<article class="bookrow">' + cover
+      + '<div class="bookmeta"><h3>' + t + '</h3>'
+      + (a ? '<p class="byline">' + a + '</p>' : '')
+      + (comment ? '<div class="comment">' + comment + '</div>' : '')
+      + '</div></article>';
+  }
+
+  function renderCatalog(lang){
+    const cat = document.getElementById("catalog");
+    if(!cat || typeof LIVRES === "undefined") return;
+    const books = parseList(LIVRES[lang] || LIVRES.en || "");
+    cat.innerHTML = books.map(b => row(b, lang)).join("");
+  }
+
+  function wireLightbox(){
+    const cat = document.getElementById("catalog");
+    const lb  = document.getElementById("lightbox");
+    if(!cat || !lb) return;
+    const img = document.getElementById("lightbox-img");
+    const closeBtn = document.getElementById("lightbox-close");
+    cat.addEventListener("click", e => {
+      const btn = e.target.closest("[data-zoom]"); if(!btn) return;
+      const im = btn.querySelector("img"); if(!im) return;
+      img.src = im.currentSrc || im.src; img.alt = im.alt || "";
+      lb.classList.add("open"); document.body.style.overflow = "hidden";
+      if(closeBtn) closeBtn.focus();
+    });
+  }
+
+  function init(){
+    renderCatalog(curLang());
+    wireLightbox();
+    document.querySelectorAll(".langs button").forEach(b => {
+      b.addEventListener("click", () => renderCatalog(b.dataset.lang));
+    });
+  }
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
 </body>
 </html>
