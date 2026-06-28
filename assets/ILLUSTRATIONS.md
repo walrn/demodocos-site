@@ -11,6 +11,10 @@ habiller les pages.
   ⚠️ `work-local/` est **gitignoré** (non versionné) : le PDF vit en local
   seulement. **Garder une copie de sauvegarde** — c'est la source pour ré-extraire
   ou découper d'autres éléments (amphore, porteur de rame, œil-livre…).
+- **Complément :** `work-local/moodboard add-on.pdf` (1 page, gitignoré aussi) —
+  3 dessins de la même main : livre ouvert au trait + 2 tasses (grande tasse type
+  cappuccino / petite tasse-soucoupe type espresso). Sources du **livre au trait**
+  et de la **tasse** actuels. La grande tasse n'a pas été retenue.
 - **Méthode d'extraction :** rendu du PDF en PNG (`qlmanage -t -s 4000`), recadrage
   de l'élément, passage du blanc en transparence (clé « blanc → alpha »), puis
   quantification du PNG. Outil ad hoc (Pillow) — pas de dépendance dans le repo.
@@ -20,7 +24,8 @@ habiller les pages.
 | Fichier | Élément | Position dans le moodboard | Utilisé dans `preview.html` |
 |---|---|---|---|
 | `oeil-demodocos.png` | Œil (courbe au-dessus, pupille blanche) | ligne 1, 2ᵉ depuis la gauche | séparateur `.eye-divider` |
-| `livre-demodocos.png` | Livre **bleu plein** (chevron) | ligne 2, 3ᵉ depuis la gauche | carte « Books and Gifts » |
+| `livre-demodocos.png` | Livre **ouvert au trait** (pages transparentes laissant voir le fond) | add-on, 1ᵉʳ depuis la gauche | carte « Books and Gifts » |
+| `tasse-demodocos.png` | Tasse + soucoupe (espresso) **bleu plein**, **pleine vapeur** qui monte | add-on, 3ᵉ depuis la gauche | carte « Coffee » |
 | `lyre-demodocos.png` | Lyre | ligne 1, 2ᵉ depuis la droite | carte « For the road » |
 | `porte-demodocos.png` | Porte + marches (arche complète) | bas-droite | section « Find us » |
 | `chat-demodocos.png` | Chat (loaf, yeux blancs) | milieu-droite | pied de page (affiché ×1.5) |
@@ -34,6 +39,12 @@ habiller les pages.
 - Pour l'instant elles ne vivent que dans **`preview.html`** (page de test
   `noindex`). Quand un parti pris est validé, porter l'`<img>` + l'asset dans
   `index.html` (et, le cas échéant, retirer le symbole SVG d'origine).
-- La **tasse** de la carte « Coffee » est restée en **SVG au trait** (`#i-cup`) :
-  l'essai « tasse craie » n'était pas concluant — à reprendre depuis un vrai
-  croquis de la même main.
+- La **tasse** de la carte « Coffee » est désormais une illustration dessinée
+  (`tasse-demodocos.png`, croquis de la même main), en remplacement de l'ancien
+  **SVG au trait** `#i-cup`. Image conservée avec sa **pleine vapeur** : la tasse
+  elle-même rend donc plus petite que le livre et la lyre, ce qui est assumé (jugé
+  visuellement cohérent). Icône à `height:54px` comme les autres → titres alignés.
+  Le symbole SVG `#i-cup` n'est plus référencé dans `preview.html`.
+- Le **livre** a été remplacé : l'ancien livre bleu plein → le **livre ouvert au
+  trait** de l'add-on. Ses pages sont transparentes (le fond papier/lavis passe au
+  travers), ce qui s'intègre bien sur les cartes.
