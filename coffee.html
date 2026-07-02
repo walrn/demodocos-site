@@ -20,10 +20,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Bannière pleine largeur dans la galerie (photo d'ambiance) — scopé à la page. */
+  .gallery .gitem.full{grid-column:1/-1}
+</style>
 
 <!-- ════════════ ZONE À MODIFIER (textes de la page « Café ») ════════════
-     Photos de la terrasse et du café Agora dans assets/ : coffee-1.jpg … coffee-3.jpg
-     Une légende facultative par photo.
+     Photos de la terrasse et du café Agora dans assets/ : coffee-1.jpg … coffee-5.jpg
+     (coffee-1 = bannière en haut). Pas de légende sous les photos.
      ═════════════════════════════════════════════════════════════════════ -->
 <script>
 const CONTENT = {
@@ -33,13 +37,9 @@ const CONTENT = {
   coffee_label: { el:"Στη σκιά", en:"In the shade", fr:"À l'ombre" },
   coffee_title: { el:"Καφές", en:"Coffee", fr:"Le café" },
   coffee_intro: {
-    el:"[ ΣΥΜΠΛΗΡΩΣΤΕ ]",
-    en:"[ TO COMPLETE ]",
+    el:"Η βεράντα και το καφέ Agora: ένα τραπέζι στη σκιά, ένα ρόφημα, κι όλος ο χρόνος του κόσμου για διάβασμα.",
+    en:"The terrace and the Agora café — a table in the shade, a drink, and all the time in the world to read.",
     fr:"La terrasse et le café Agora : une table à l'ombre, une boisson, et tout le temps du monde pour lire." },
-
-  cof_1_cap: { el:"[ ΣΥΜΠΛΗΡΩΣΤΕ ]", en:"[ TO COMPLETE ]", fr:"La terrasse" },
-  cof_2_cap: { el:"[ ΣΥΜΠΛΗΡΩΣΤΕ ]", en:"[ TO COMPLETE ]", fr:"Le café Agora" },
-  cof_3_cap: { el:"[ ΣΥΜΠΛΗΡΩΣΤΕ ]", en:"[ TO COMPLETE ]", fr:"Légende à écrire" },
 
   lightbox_close: { el:"Κλείσιμο", en:"Close", fr:"Fermer" },
   foot_tagline:   { el:"Ένα μικρό βιβλιοπωλείο στην Ίο", en:"A small bookshop on Ios", fr:"Une petite librairie à Ios" }
@@ -79,25 +79,34 @@ const DEFAULT_LANG = "en";
       </div>
       <div class="gallery reveal">
 
-        <figure class="gitem wide">
+        <figure class="gitem wide full">
           <button type="button" class="zoom" data-zoom>
-            <img src="assets/coffee-1.jpg" data-i18n-alt="cof_1_cap" width="1600" height="1067" loading="lazy">
+            <img src="assets/coffee-1.jpg" alt="La placette et sa terrasse à l'ombre" width="1170" height="780" loading="lazy">
           </button>
-          <p class="cap" data-i18n="cof_1_cap"></p>
         </figure>
 
-        <figure class="gitem wide">
+        <figure class="gitem">
           <button type="button" class="zoom" data-zoom>
-            <img src="assets/coffee-2.jpg" data-i18n-alt="cof_2_cap" width="1600" height="1067" loading="lazy">
+            <img src="assets/coffee-2.jpg" alt="La façade du café Agora, vue sous l'arche" width="1155" height="1646" loading="lazy">
           </button>
-          <p class="cap" data-i18n="cof_2_cap"></p>
         </figure>
 
-        <figure class="gitem wide">
+        <figure class="gitem">
           <button type="button" class="zoom" data-zoom>
-            <img src="assets/coffee-3.jpg" data-i18n-alt="cof_3_cap" width="1600" height="1067" loading="lazy">
+            <img src="assets/coffee-3.jpg" alt="L'intérieur : la machine à espresso et les moulins" width="1152" height="1595" loading="lazy">
           </button>
-          <p class="cap" data-i18n="cof_3_cap"></p>
+        </figure>
+
+        <figure class="gitem">
+          <button type="button" class="zoom" data-zoom>
+            <img src="assets/coffee-4.jpg" alt="Musique live le soir sur la terrasse" width="1165" height="1258" loading="lazy">
+          </button>
+        </figure>
+
+        <figure class="gitem">
+          <button type="button" class="zoom" data-zoom>
+            <img src="assets/coffee-5.jpg" alt="La petite chapelle blanche et les tables à l'ombre" width="906" height="1532" loading="lazy">
+          </button>
         </figure>
 
       </div>
