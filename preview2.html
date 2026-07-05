@@ -129,11 +129,15 @@ const DEFAULT_LANG = "en";
   /* PROTOTYPE (preview2) — lien près du logo + modale d'explication.
      Fond bleu ciel (= var(--wash), même que « What you'll find ») avec le porteur
      de rame en filigrane très léger derrière le texte. Scopé le temps de valider. */
-  /* lien discret, ancré en haut à droite du hero (hors flux → ne casse pas la lecture) */
-  .logo-link{position:absolute;top:clamp(14px,2.4vw,26px);right:clamp(16px,4vw,40px);z-index:3;
+  /* boîte du logo : sert d'ancrage pour placer le lien en bas à gauche du porteur de rame */
+  .figure-stage .logo-wrap{position:relative;width:min(330px,80%);margin-inline:auto;line-height:0}
+  .figure-stage .logo-wrap svg.fig{width:100%}
+  @media(max-width:680px){ .figure-stage .logo-wrap{width:min(220px,56%)} }
+  /* lien discret, en bas à gauche du logo (hors flux → ne casse pas la lecture) */
+  .logo-link{position:absolute;left:0;bottom:-1.6em;z-index:3;
     background:none;border:0;cursor:pointer;padding:0;
     font-family:var(--body);text-transform:uppercase;letter-spacing:.18em;font-size:.62rem;
-    color:var(--ink);opacity:.6}
+    color:var(--ink);opacity:.6;white-space:nowrap}
   .logo-link::after{content:" \2192"}
   .logo-link:hover{opacity:1}
 
@@ -207,7 +211,6 @@ const DEFAULT_LANG = "en";
 <main>
   <!-- ACCUEIL -->
   <section class="hero">
-    <button type="button" class="logo-link" id="logo-open" data-i18n="logo_link"></button>
     <div class="wrap hero-grid">
       <div>
         <div class="hero-place label reveal" data-i18n="hero_place"></div>
@@ -220,6 +223,7 @@ const DEFAULT_LANG = "en";
         </div>
       </div>
       <div class="figure-stage reveal">
+        <div class="logo-wrap">
         <svg class="fig" viewBox="0 0 2019.000000 2070.000000" fill="currentColor" role="img" aria-label="The oar-bearer"><g transform="translate(0.000000,2070.000000) scale(0.100000,-0.100000)"><path d="M3480 20265 c0 -8 -7 -15 -15 -15 -8 0 -15 -7 -15 -15 0 -8 -7 -15
 -15 -15 -8 0 -15 -7 -15 -15 0 -8 -7 -15 -15 -15 -10 0 -15 -10 -15 -30 0 -20
 -5 -30 -15 -30 -8 0 -15 -7 -15 -15 0 -8 -7 -15 -15 -15 -10 0 -15 -10 -15
@@ -851,6 +855,8 @@ const DEFAULT_LANG = "en";
 15 30 8 0 15 7 15 15 0 8 7 15 15 15 10 0 15 10 15 30 0 20 5 30 15 30 8 0 15
 7 15 15 0 8 7 15 15 15 10 0 15 10 15 30 0 20 5 30 15 30 8 0 15 7 15 15 0 8
 7 15 15 15 10 0 15 10 15 30 0 27 3 30 30 30 27 0 30 -3 30 -30z"/></g></svg>
+          <button type="button" class="logo-link" id="logo-open" data-i18n="logo_link"></button>
+        </div>
       </div>
     </div>
     <div class="scroll-cue">
