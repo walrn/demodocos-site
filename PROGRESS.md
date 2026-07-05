@@ -30,13 +30,29 @@
 - **Nouvel accueil publié** : `index.html` = ex-`preview.html` nettoyé (illustrations du
   moodboard + 3 cartes cliquables), sans repère « PAGE DE TEST », en-tête public restauré.
 - **Sous-pages publiques** : `noindex` retiré de `books.html`, `coffee.html`, `road.html`.
-  Seul `preview.html` reste `noindex` (bac à sable).
+  Seuls `preview.html` et `preview2.html` restent `noindex` (bacs à sable).
 - **`coffee.html`** : 5 photos Agora (bannière + grille 2×2), intro traduite EL/EN.
 - **`road.html`** : section « Livres » (Footpaths, The Odyssey Map + carte panoramique,
   Island of Echoes avant/arrière) + section « Carnets » (7, grille sans légende).
 
+### Explication du logo (porteur de rame) — 2 prototypes, DÉCISION EN ATTENTE
+Idée de Christophe : expliquer le logo sur l'accueil, comme « Le nom ». Texte source
+(EN) + traductions FR/EL (brouillons) dans `work-local/drafts/logo-explanation.md`.
+Deux pistes prototypées, **aucune encore portée dans `index.html`** :
+- **`preview.html` → Option A** : bloc « Notre logo » dans la page (après « Le nom »),
+  texte de Tirésias **replié** dans un `<details>` (léger par défaut).
+- **`preview2.html` → Modale** : lien discret « Notre logo → » **en bas à gauche du
+  porteur de rame** (hero) qui ouvre une **modale** `<dialog>` (fond bleu ciel `--wash`,
+  porteur de rame en filigrane, texte justifié, scroll interne + verrou page iOS).
+  Asset créé au passage : `assets/oar-bearer.svg` (signature seule, réutilisable).
+
 ## ⏳ À faire
 
+- [ ] **Choisir la piste logo** (Option A `preview.html` vs Modale `preview2.html`),
+      puis la **porter dans `index.html`** + porter le style scopé dans `styles.css`.
+      Ajuster au besoin (taille/place du lien, filigrane…).
+- [ ] **Relecture Christophe — textes du logo** (label « Notre logo » vs « emblème » ?,
+      titre grec « Ο άντρας με το κουπί », traductions FR/EL) — voir `drafts/logo-explanation.md`.
 - [ ] **Relecture Christophe — `road.html`** : commentaires + titres des 3 livres et titres de
       section = **brouillons** (FR/EN/EL) rédigés par l'assistant, à valider/corriger.
       Détail dans `work-local/processed/2026-07-05-pour-la-route/meta.md`.
@@ -45,13 +61,17 @@
 - [ ] **Couvertures déjà recadrées** (herodote, castoriadis-fr/el, vernant, cartledge,
       odyssey-mendelsohn, circe FR) : décider si on les **ré-extrait entières** (nouvelle règle
       « ne pas recadrer ») ou si on les garde telles quelles.
-- [ ] **Porter les styles scopés** de `books.html` / `road.html` vers `styles.css`.
-- [ ] `preview.html` = copie de l'ex-accueil ; **diverge maintenant** du nouvel `index.html`.
-      Resynchroniser ou redéfinir son rôle de bac à sable.
+- [ ] **Porter les styles scopés** de `books.html` / `road.html` (et de la piste logo retenue)
+      vers `styles.css`.
+- [ ] **`preview.html` / `preview2.html` divergent de `index.html`** (ils portent des essais logo).
+      Après décision : porter dans `index.html`, puis resynchroniser/nettoyer les bacs à sable.
 - [ ] (Option) CMS léger (Pages CMS) par-dessus les données si l'édition de fichier devient pénible.
 
 ## Repères
 - Workflow de réception d'un nouvel envoi → `work-local/README.md`.
 - Règles de contenu (dont archivage systématique des `inbox*`) → `work-local/RULES.md`.
 - Déploiement : `git push origin main` → GitHub Pages (~1 min). Tout est public sauf
-  `preview.html` (`noindex`).
+  `preview.html` et `preview2.html` (`noindex`).
+- ⚠️ **GitHub Pages peut se bloquer** (build « building » figé des heures). Remède :
+  pousser un **commit vide** (`git commit --allow-empty`) pour relancer un build.
+  Vérifier le statut : `gh api repos/walrn/demodocos-site/pages/builds/latest`.
