@@ -129,27 +129,37 @@ const DEFAULT_LANG = "en";
   /* PROTOTYPE (preview2) — lien près du logo + modale d'explication.
      Fond bleu ciel (= var(--wash), même que « What you'll find ») avec le porteur
      de rame en filigrane très léger derrière le texte. Scopé le temps de valider. */
-  .logo-link{display:inline-block;margin-top:22px;background:none;border:0;cursor:pointer;
-    font-family:var(--body);text-transform:uppercase;letter-spacing:.2em;font-size:.76rem;
-    color:var(--ink);padding:0}
+  /* lien discret, ancré en haut à droite du hero (hors flux → ne casse pas la lecture) */
+  .logo-link{position:absolute;top:clamp(14px,2.4vw,26px);right:clamp(16px,4vw,40px);z-index:3;
+    background:none;border:0;cursor:pointer;padding:0;
+    font-family:var(--body);text-transform:uppercase;letter-spacing:.18em;font-size:.62rem;
+    color:var(--ink);opacity:.6}
   .logo-link::after{content:" \2192"}
-  .logo-link:hover{opacity:.65}
+  .logo-link:hover{opacity:1}
 
-  dialog.logo-modal{box-sizing:border-box;width:92vw;max-width:560px;max-height:88vh;
+  dialog.logo-modal{box-sizing:border-box;width:92vw;max-width:560px;max-height:86vh;
     border:0;padding:0;background:var(--wash);color:var(--text);border-radius:6px;
     overflow:hidden;box-shadow:0 24px 70px rgba(10,46,99,.32)}
   dialog.logo-modal::backdrop{background:rgba(10,46,99,.55)}
-  .logo-modal .inner{box-sizing:border-box;position:relative;padding:clamp(26px,5vw,52px)}
-  /* filigrane : le porteur de rame, très légère transparence, derrière le texte */
+  /* filigrane : rattaché au dialog (reste fixe pendant que le texte défile) */
   .logo-modal .mark{position:absolute;right:clamp(8px,3vw,24px);bottom:0;
     width:min(58%,240px);height:auto;opacity:.08;pointer-events:none;z-index:0}
-  .logo-modal .body{position:relative;z-index:1}
+  /* .inner = zone défilable (le texte défile DANS la fenêtre) */
+  .logo-modal .inner{box-sizing:border-box;position:relative;z-index:1;
+    max-height:86vh;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    padding:clamp(26px,5vw,52px)}
+  .logo-modal .body{position:relative}
   .logo-modal .label{display:block;margin-bottom:.7em}
   .logo-modal h2{font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 .6em}
-  .logo-modal .txt{font-size:1.06rem;line-height:1.6;max-width:44ch;margin:0;overflow-wrap:break-word}
+  .logo-modal .txt{font-size:1.06rem;line-height:1.6;max-width:44ch;margin:0;
+    overflow-wrap:break-word;text-align:justify;hyphens:auto}
   .logo-modal .close{position:absolute;top:10px;right:14px;z-index:2;background:none;border:0;
     font-size:1.9rem;line-height:1;color:var(--ink);cursor:pointer;opacity:.6;padding:.1em .2em}
   .logo-modal .close:hover{opacity:1}
+  @media(max-width:520px){
+    .logo-modal .txt{font-size:.94rem;line-height:1.58}
+    .logo-modal h2{font-size:1.4rem}
+  }
 </style>
 </head>
 <body>
@@ -197,6 +207,7 @@ const DEFAULT_LANG = "en";
 <main>
   <!-- ACCUEIL -->
   <section class="hero">
+    <button type="button" class="logo-link" id="logo-open" data-i18n="logo_link"></button>
     <div class="wrap hero-grid">
       <div>
         <div class="hero-place label reveal" data-i18n="hero_place"></div>
@@ -840,7 +851,6 @@ const DEFAULT_LANG = "en";
 15 30 8 0 15 7 15 15 0 8 7 15 15 15 10 0 15 10 15 30 0 20 5 30 15 30 8 0 15
 7 15 15 0 8 7 15 15 15 10 0 15 10 15 30 0 20 5 30 15 30 8 0 15 7 15 15 0 8
 7 15 15 15 10 0 15 10 15 30 0 27 3 30 30 30 27 0 30 -3 30 -30z"/></g></svg>
-        <button type="button" class="logo-link" id="logo-open" data-i18n="logo_link"></button>
       </div>
     </div>
     <div class="scroll-cue">
@@ -943,8 +953,8 @@ const DEFAULT_LANG = "en";
 
 <dialog class="logo-modal" id="logo-modal" aria-labelledby="logo-modal-title">
   <button type="button" class="close" id="logo-close" aria-label="Close">&times;</button>
+  <img class="mark" src="assets/oar-bearer.svg" alt="" aria-hidden="true" width="2019" height="2070">
   <div class="inner">
-    <img class="mark" src="assets/oar-bearer.svg" alt="" aria-hidden="true" width="2019" height="2070">
     <div class="body">
       <span class="label" data-i18n="logo_label"></span>
       <h2 id="logo-modal-title" data-i18n="logo_title"></h2>
@@ -956,17 +966,27 @@ const DEFAULT_LANG = "en";
 <script src="site.js"></script>
 <script>
 /* Modale « Notre logo » (propre à preview2). <dialog> natif : ouverture au clic sur le
-   lien près du logo, fermeture par la croix, l'Échap (natif) ou un clic sur le fond. */
+   lien près du logo, fermeture par la croix, l'Échap (natif) ou un clic sur le fond.
+   On verrouille le défilement de la page derrière la fenêtre (sinon, sur iOS, c'est la
+   page complète qui défile) ; le texte, lui, défile dans .inner. */
 (function(){
   "use strict";
   var dlg = document.getElementById("logo-modal");
   var open = document.getElementById("logo-open");
   var close = document.getElementById("logo-close");
   if(!dlg || !open) return;
-  open.addEventListener("click", function(){ if(typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open",""); });
+  var root = document.documentElement;
+  function lock(){ root.style.overflow = "hidden"; }
+  function unlock(){ root.style.overflow = ""; }
+  open.addEventListener("click", function(){
+    if(typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open","");
+    lock();
+  });
   if(close) close.addEventListener("click", function(){ dlg.close(); });
   // clic sur le fond (backdrop) : la cible est le <dialog> lui-même
   dlg.addEventListener("click", function(e){ if(e.target === dlg) dlg.close(); });
+  // rétablir le défilement quelle que soit la façon de fermer (croix, Échap, fond)
+  dlg.addEventListener("close", unlock);
 })();
 </script>
 </body>
