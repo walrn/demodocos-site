@@ -54,6 +54,20 @@ const CONTENT = {
     el:"Στην Οδύσσεια, ο Δημόδοκος είναι ο τυφλός αοιδός που το τραγούδι του για την Τροία είναι τόσο αληθινό, ώστε ο Οδυσσέας, ακούγοντάς το, σκεπάζει το πρόσωπό του και κλαίει. Πήραμε το όνομά του γι' αυτόν τον τρόπο που μια ιστορία διασχίζει το δωμάτιο και σε βρίσκει.",
     en:"In the Odyssey, Demodocos is the blind poet whose song of Troy rings so true that Odysseus, listening, covers his face and weeps. We chose his name to show how deeply stories can resonate with us, drawing us in so compellingly that we are moved.",
     fr:"Dans l'Odyssée, Démodocos est le poète aveugle dont le chant de Troie sonne si juste qu'Ulysse, en l'écoutant, se voile le visage et pleure. Nous avons choisi son nom pour illustrer la profondeur avec laquelle les récits peuvent nous absorber et nous toucher au point de nous transformer." },
+
+  /* ----- Le logo / le porteur de rame (BROUILLONS — à relire par Christophe) ----- */
+  logo_label:   { el:"Το σήμα μας", en:"Our logo", fr:"Notre logo" },
+  logo_title:   { el:"Ο άντρας με το κουπί", en:"The oar-bearer", fr:"Le porteur de rame" },
+  logo_caption: {
+    el:"Ο Οδυσσέας, μ' ένα κουπί στον ώμο, βαθιά στη στεριά — το τέλος του τελευταίου του ταξιδιού.",
+    en:"Ulysses, an oar on his shoulder, walking far inland — the close of his last journey.",
+    fr:"Ulysse, une rame sur l'épaule, marchant loin dans les terres — la fin de son dernier voyage." },
+  logo_more:    { el:"Διαβάστε την ιστορία", en:"Read the story", fr:"Lire l'histoire" },
+  logo_body: {
+    el:"Ο Οδυσσέας ταξίδεψε ως τα όρια του Κάτω Κόσμου για να συμβουλευτεί τον Τειρεσία, τον θρυλικό τυφλό μάντη, για την επιστροφή του στην Ιθάκη. Ο μάντης του αποκάλυψε και τον δρόμο του γυρισμού και μια ακόμη προφητεία. Ως εξιλέωση επειδή τύφλωσε τον γιο του Ποσειδώνα και για την ίδια του την ύβρη, ο Οδυσσέας θα έπρεπε, μετά την επιστροφή του, να αφήσει ξανά τη γυναίκα και τον γιο του. Μ' ένα κουπί στον ώμο, θα έπρεπε να προχωρεί στην ενδοχώρα ώσπου να συναντήσει ανθρώπους που δεν γνωρίζουν τίποτα για καράβια και θάλασσα. Μόνο όταν ένας ξένος περάσει το κουπί για φτυάρι λιχνίσματος θα τελειώσει η δεύτερη οδύσσειά του. Εκεί θα το μπήξει στη γη, θα προσφέρει θυσίες και τελικά θα γυρίσει στο σπίτι του να ζήσει ειρηνικά τα υπόλοιπα του χρόνια.",
+    en:"Odysseus journeyed to the edge of the Underworld to consult Tiresias, the legendary blind seer, about his return to Ithaca. The diviner revealed both the path home and a further prophecy. As atonement for blinding Poseidon's son and for his own hubris, Odysseus would have to abandon his wife and son once again after his return. Carrying an oar over his shoulder, he must wander inland until encountering people who know nothing of ships or the sea. Only when a stranger mistakes the oar for a winnowing fan will his second odyssey come to an end. There he will plant it in the earth, offer sacrifices and finally return home to live out his remaining years in peace.",
+    fr:"Ulysse descendit aux confins des Enfers pour consulter Tirésias, le légendaire devin aveugle, sur son retour à Ithaque. Le devin lui révéla à la fois le chemin du retour et une autre prophétie. Pour expier d'avoir aveuglé le fils de Poséidon et pour sa propre démesure, Ulysse devrait, une fois rentré, abandonner de nouveau sa femme et son fils. Une rame sur l'épaule, il lui faudrait marcher vers l'intérieur des terres jusqu'à rencontrer un peuple qui ignore tout des navires et de la mer. Ce n'est que lorsqu'un inconnu prendra la rame pour une pelle à vanner que sa seconde odyssée prendra fin. Là, il la plantera en terre, offrira des sacrifices, puis rentrera enfin chez lui pour couler en paix le reste de ses jours." },
+
   homer_epigraph: {
     el:"Ο ξακουστός τυφλός αοιδός Δημόδοκος τραγουδούσε, κι ο μέγας Οδυσσέας έλιωνε στα δάκρυα.",
     en:"The famous blind harper Demodocos sang, and great Odysseus melted into tears.",
@@ -114,6 +128,24 @@ const DEFAULT_LANG = "en";
 <!-- ═══════════════ FIN DE LA ZONE À MODIFIER ═══════════════ -->
 
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* PROTOTYPE — Option A : bloc « Notre logo » avec texte de Tirésias repliable.
+     Scopé à preview.html le temps de valider ; à porter dans styles.css si adopté. */
+  #logo .logo-caption{max-width:52ch;font-family:var(--display);font-style:italic;
+    font-size:1.3rem;line-height:1.5;color:var(--ink);margin:0}
+  #logo .logo-more{margin-top:1.5em;max-width:64ch}
+  #logo .logo-more summary{display:inline-flex;align-items:center;gap:.55em;cursor:pointer;
+    list-style:none;user-select:none;font-family:var(--body);text-transform:uppercase;
+    letter-spacing:.2em;font-size:.78rem;color:var(--ink)}
+  #logo .logo-more summary::-webkit-details-marker{display:none}
+  #logo .logo-more summary::before{content:"";width:0;height:0;
+    border-left:6px solid currentColor;border-top:4.5px solid transparent;
+    border-bottom:4.5px solid transparent;transition:transform .2s ease}
+  #logo .logo-more[open] summary::before{transform:rotate(90deg)}
+  #logo .logo-more summary:hover{opacity:.65}
+  #logo .logo-body{margin:1.2em 0 0;max-width:64ch;font-size:1.12rem;
+    line-height:1.62;color:var(--text)}
+</style>
 </head>
 <body>
 <!-- Repère page de test — retirer cette ligne pour une démo "propre" -->
@@ -835,6 +867,21 @@ const DEFAULT_LANG = "en";
       <div class="eye-divider reveal" aria-hidden="true">
         <span class="ln"></span><img src="assets/oeil-demodocos.png" alt="" aria-hidden="true" width="240" height="140" style="width:50px;height:auto;opacity:.85"><span class="ln"></span>
       </div>
+    </div>
+  </section>
+
+  <!-- NOTRE LOGO (prototype option A) -->
+  <section class="section" id="logo">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="label" data-i18n="logo_label"></span>
+        <h2 data-i18n="logo_title"></h2>
+      </div>
+      <p class="logo-caption reveal" data-i18n="logo_caption"></p>
+      <details class="logo-more reveal">
+        <summary><span data-i18n="logo_more"></span></summary>
+        <p class="logo-body" data-i18n="logo_body"></p>
+      </details>
     </div>
   </section>
 
