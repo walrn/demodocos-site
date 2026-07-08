@@ -56,6 +56,18 @@ const CONTENT = {
     el:"Στην Οδύσσεια, ο Δημόδοκος είναι ο τυφλός αοιδός που το τραγούδι του για την Τροία είναι τόσο αληθινό, ώστε ο Οδυσσέας, ακούγοντάς το, σκεπάζει το πρόσωπό του και κλαίει. Πήραμε το όνομά του γι' αυτόν τον τρόπο που μια ιστορία διασχίζει το δωμάτιο και σε βρίσκει.",
     en:"In the Odyssey, Demodocos is the blind poet whose song of Troy rings so true that Odysseus, listening, covers his face and weeps. We chose his name to show how deeply stories can resonate with us, drawing us in so compellingly that we are moved.",
     fr:"Dans l'Odyssée, Démodocos est le poète aveugle dont le chant de Troie sonne si juste qu'Ulysse, en l'écoutant, se voile le visage et pleure. Nous avons choisi son nom pour illustrer la profondeur avec laquelle les récits peuvent nous absorber et nous toucher au point de nous transformer." },
+
+  /* ----- Le logo / le porteur de rame (modale — BROUILLONS à relire par Christophe) ----- */
+  logo_link:  { el:"Το σήμα μας", en:"Our logo", fr:"Notre logo" },
+  logo_close: { el:"Κλείσιμο", en:"Close", fr:"Fermer" },
+  logo_label: { el:"Το σήμα μας", en:"Our logo", fr:"Notre logo" },
+  logo_title: { el:"Ο άντρας με το κουπί", en:"The oar-bearer", fr:"Le porteur de rame" },
+  logo_body: {
+    el:"Ο Οδυσσέας ταξίδεψε ως τις παρυφές του Άδη για να συμβουλευτεί τον Τειρεσία, τον θρυλικό τυφλό μάντη, σχετικά με την επιστροφή του στην Ιθάκη. Ο μάντης τού αποκάλυψε τον δρόμο του νόστου, αλλά και μια ακόμη προφητεία. Επειδή ο Ποσειδώνας δεν θα ξεχάσει την οργή του για την τύφλωση του γιου του, ο Οδυσσέας, αφού επιστρέψει και τιμωρήσει τους μνηστήρες, θα πρέπει να αφήσει ξανά το σπίτι του. Κρατώντας ένα κουπί στον ώμο, θα του πρέπει να προχωρήσει προς την ενδοχώρα, ώσπου να φτάσει σε ανθρώπους που δεν γνωρίζουν τίποτε από πλοία, από κουπιά ή από θάλασσα. Μόνο όταν ένας οδοιπόρος περάσει το κουπί για λιχνιστήρι, θα φτάσει στο τέλος της η δεύτερη οδύσσειά του. Εκεί θα μπήξει το κουπί στη γη, θα προσφέρει θυσίες στον Ποσειδώνα και, τέλος, θα επιστρέψει στην πατρίδα του για να ζήσει ειρηνικά τα χρόνια που του απομένουν.",
+    en:"Odysseus journeyed to the edge of the Underworld to consult Tiresias, the legendary blind seer, about his return to Ithaca. The diviner revealed both the path home and a further prophecy. As atonement for blinding Poseidon's son and for his own hubris, Odysseus would have to abandon his wife and son once again after his return. Carrying an oar over his shoulder, he must wander inland until encountering people who know nothing of ships or the sea. Only when a stranger mistakes the oar for a winnowing fan will his second odyssey come to an end. There he will plant it in the earth, offer sacrifices and finally return home to live out his remaining years in peace.",
+    fr:"Ulysse se rendit aux confins des Enfers afin de consulter Tirésias, le légendaire devin aveugle, au sujet de son retour à Ithaque. Le prophète lui révéla à la fois le chemin du retour et une autre prophétie. Pour expier l'aveuglement du fils de Poséidon et sa propre hubris, Ulysse devra, après son retour, abandonner une fois encore sa femme et son fils. Portant une rame sur l'épaule, il lui faudra errer vers l'intérieur des terres jusqu'à rencontrer des peuples qui ne connaissent rien des navires ni de la mer. Ce n'est que lorsqu'un étranger prendra la rame pour un van* que sa seconde odyssée prendra fin. Là, il plantera la rame dans la terre, offrira des sacrifices et rentrera enfin chez lui pour vivre en paix les années qui lui resteront." },
+  logo_note: { el:"", en:"", fr:"* van : outil agricole servant à séparer le grain de la balle." },
+
   homer_epigraph: {
     el:"Ο ξακουστός τυφλός αοιδός Δημόδοκος τραγουδούσε, κι ο μέγας Οδυσσέας έλιωνε στα δάκρυα.",
     en:"The famous blind harper Demodocos sang, and great Odysseus melted into tears.",
@@ -116,6 +128,49 @@ const DEFAULT_LANG = "en";
 <!-- ═══════════════ FIN DE LA ZONE À MODIFIER ═══════════════ -->
 
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* « Notre logo » — lien en bas à gauche du porteur de rame + modale d'explication.
+     Fond bleu ciel (= var(--wash), même que « What you'll find »), porteur de rame
+     en filigrane léger derrière le texte. (Scopé ici ; à porter dans styles.css.) */
+  /* boîte du logo : sert d'ancrage pour placer le lien en bas à gauche du porteur de rame */
+  .figure-stage .logo-wrap{position:relative;width:min(330px,80%);margin-inline:auto;line-height:0}
+  .figure-stage .logo-wrap svg.fig{width:100%}
+  @media(max-width:680px){ .figure-stage .logo-wrap{width:min(220px,56%)} }
+  /* lien discret, en bas à gauche du logo (hors flux → ne casse pas la lecture) */
+  .logo-link{position:absolute;left:0;bottom:-1.6em;z-index:3;
+    background:none;border:0;cursor:pointer;padding:0;
+    font-family:var(--body);text-transform:uppercase;letter-spacing:.18em;font-size:.62rem;
+    color:var(--ink);opacity:.6;white-space:nowrap}
+  .logo-link::after{content:" \2192"}
+  .logo-link:hover{opacity:1}
+
+  dialog.logo-modal{box-sizing:border-box;width:92vw;max-width:560px;max-height:86vh;
+    border:0;padding:0;background:var(--wash);color:var(--text);border-radius:6px;
+    overflow:hidden;box-shadow:0 24px 70px rgba(10,46,99,.32)}
+  dialog.logo-modal::backdrop{background:rgba(10,46,99,.55)}
+  /* filigrane : rattaché au dialog (reste fixe pendant que le texte défile) */
+  .logo-modal .mark{position:absolute;right:clamp(8px,3vw,24px);bottom:0;
+    width:min(58%,240px);height:auto;opacity:.08;pointer-events:none;z-index:0}
+  /* .inner = zone défilable (le texte défile DANS la fenêtre) */
+  .logo-modal .inner{box-sizing:border-box;position:relative;z-index:1;
+    max-height:86vh;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    padding:clamp(26px,5vw,52px)}
+  .logo-modal .body{position:relative}
+  .logo-modal .label{display:block;margin-bottom:.7em}
+  .logo-modal h2{font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 .6em}
+  .logo-modal .txt{font-size:1.06rem;line-height:1.6;max-width:44ch;margin:0;
+    overflow-wrap:break-word;text-align:justify;hyphens:auto}
+  .logo-modal .gloss{margin:.9em 0 0;font-size:.86rem;font-style:italic;
+    line-height:1.5;color:var(--text);opacity:.7}
+  .logo-modal .gloss:empty{display:none}
+  .logo-modal .close{position:absolute;top:10px;right:14px;z-index:2;background:none;border:0;
+    font-size:1.9rem;line-height:1;color:var(--ink);cursor:pointer;opacity:.6;padding:.1em .2em}
+  .logo-modal .close:hover{opacity:1}
+  @media(max-width:520px){
+    .logo-modal .txt{font-size:.94rem;line-height:1.58}
+    .logo-modal h2{font-size:1.4rem}
+  }
+</style>
 </head>
 <body>
 
@@ -172,6 +227,7 @@ const DEFAULT_LANG = "en";
         </div>
       </div>
       <div class="figure-stage reveal">
+        <div class="logo-wrap">
         <svg class="fig" viewBox="0 0 2019.000000 2070.000000" fill="currentColor" role="img" aria-label="The oar-bearer"><g transform="translate(0.000000,2070.000000) scale(0.100000,-0.100000)"><path d="M3480 20265 c0 -8 -7 -15 -15 -15 -8 0 -15 -7 -15 -15 0 -8 -7 -15
 -15 -15 -8 0 -15 -7 -15 -15 0 -8 -7 -15 -15 -15 -10 0 -15 -10 -15 -30 0 -20
 -5 -30 -15 -30 -8 0 -15 -7 -15 -15 0 -8 -7 -15 -15 -15 -10 0 -15 -10 -15
@@ -803,6 +859,8 @@ const DEFAULT_LANG = "en";
 15 30 8 0 15 7 15 15 0 8 7 15 15 15 10 0 15 10 15 30 0 20 5 30 15 30 8 0 15
 7 15 15 0 8 7 15 15 15 10 0 15 10 15 30 0 20 5 30 15 30 8 0 15 7 15 15 0 8
 7 15 15 15 10 0 15 10 15 30 0 27 3 30 30 30 27 0 30 -3 30 -30z"/></g></svg>
+          <button type="button" class="logo-link" id="logo-open" data-i18n="logo_link"></button>
+        </div>
       </div>
     </div>
     <div class="scroll-cue">
@@ -903,6 +961,44 @@ const DEFAULT_LANG = "en";
   </div>
 </footer>
 
+<dialog class="logo-modal" id="logo-modal" aria-labelledby="logo-modal-title">
+  <button type="button" class="close" id="logo-close" aria-label="Close">&times;</button>
+  <img class="mark" src="assets/oar-bearer.svg" alt="" aria-hidden="true" width="2019" height="2070">
+  <div class="inner">
+    <div class="body">
+      <span class="label" data-i18n="logo_label"></span>
+      <h2 id="logo-modal-title" data-i18n="logo_title"></h2>
+      <p class="txt" data-i18n="logo_body"></p>
+      <p class="gloss" data-i18n="logo_note"></p>
+    </div>
+  </div>
+</dialog>
+
 <script src="site.js"></script>
+<script>
+/* Modale « Notre logo » (propre à l'accueil). <dialog> natif : ouverture au clic sur le
+   lien près du logo, fermeture par la croix, l'Échap (natif) ou un clic sur le fond.
+   On verrouille le défilement de la page derrière la fenêtre (sinon, sur iOS, c'est la
+   page complète qui défile) ; le texte, lui, défile dans .inner. */
+(function(){
+  "use strict";
+  var dlg = document.getElementById("logo-modal");
+  var open = document.getElementById("logo-open");
+  var close = document.getElementById("logo-close");
+  if(!dlg || !open) return;
+  var root = document.documentElement;
+  function lock(){ root.style.overflow = "hidden"; }
+  function unlock(){ root.style.overflow = ""; }
+  open.addEventListener("click", function(){
+    if(typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open","");
+    lock();
+  });
+  if(close) close.addEventListener("click", function(){ dlg.close(); });
+  // clic sur le fond (backdrop) : la cible est le <dialog> lui-même
+  dlg.addEventListener("click", function(e){ if(e.target === dlg) dlg.close(); });
+  // rétablir le défilement quelle que soit la façon de fermer (croix, Échap, fond)
+  dlg.addEventListener("close", unlock);
+})();
+</script>
 </body>
 </html>
