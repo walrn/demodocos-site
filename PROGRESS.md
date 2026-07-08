@@ -35,24 +35,22 @@
 - **`road.html`** : section « Livres » (Footpaths, The Odyssey Map + carte panoramique,
   Island of Echoes avant/arrière) + section « Carnets » (7, grille sans légende).
 
-### Explication du logo (porteur de rame) — 2 prototypes, DÉCISION EN ATTENTE
-Idée de Christophe : expliquer le logo sur l'accueil, comme « Le nom ». Texte source
-(EN) + traductions FR/EL (brouillons) dans `work-local/drafts/logo-explanation.md`.
-Deux pistes prototypées, **aucune encore portée dans `index.html`** :
-- **`preview.html` → Option A** : bloc « Notre logo » dans la page (après « Le nom »),
-  texte de Tirésias **replié** dans un `<details>` (léger par défaut).
-- **`preview2.html` → Modale** : lien discret « Notre logo → » **en bas à gauche du
-  porteur de rame** (hero) qui ouvre une **modale** `<dialog>` (fond bleu ciel `--wash`,
-  porteur de rame en filigrane, texte justifié, scroll interne + verrou page iOS).
-  Asset créé au passage : `assets/oar-bearer.svg` (signature seule, réutilisable).
+### Explication du logo (porteur de rame) — MODALE PUBLIÉE sur l'accueil (08/07/2026)
+Idée de Christophe : expliquer le logo sur l'accueil, comme « Le nom ». Décision de
+l'utilisateur (Walrn) : **piste Modale retenue et portée dans `index.html`** (commit
+7028508). Sur l'accueil : lien discret « Notre logo → » **en bas à gauche du porteur de
+rame** (hero) → **modale** `<dialog>` (fond bleu ciel `--wash`, porteur de rame en
+filigrane, texte de Tirésias justifié FR/EN/EL, **note FR sur « van »**, scroll interne +
+verrou page iOS). N'ajoute pas de section (accueil reste léger). Asset : `assets/oar-bearer.svg`.
+Textes source + trad dans `work-local/drafts/logo-explanation.md` (FR/EL fournis par
+l'utilisateur ; relecture Christophe encore souhaitable).
+Les deux bacs à sable restent : `preview.html` (Option A, bloc replié — non retenue) et
+`preview2.html` (Modale, = ce qui est en prod).
 
 ## ⏳ À faire
 
-- [ ] **Choisir la piste logo** (Option A `preview.html` vs Modale `preview2.html`),
-      puis la **porter dans `index.html`** + porter le style scopé dans `styles.css`.
-      Ajuster au besoin (taille/place du lien, filigrane…).
 - [ ] **Relecture Christophe — textes du logo** (label « Notre logo » vs « emblème » ?,
-      titre grec « Ο άντρας με το κουπί », traductions FR/EL) — voir `drafts/logo-explanation.md`.
+      titre grec, formulation) — voir `drafts/logo-explanation.md`. **En ligne** en attendant.
 - [ ] **Relecture Christophe — `road.html`** : commentaires + titres des 3 livres et titres de
       section = **brouillons** (FR/EN/EL) rédigés par l'assistant, à valider/corriger.
       Détail dans `work-local/processed/2026-07-05-pour-la-route/meta.md`.
@@ -61,10 +59,11 @@ Deux pistes prototypées, **aucune encore portée dans `index.html`** :
 - [ ] **Couvertures déjà recadrées** (herodote, castoriadis-fr/el, vernant, cartledge,
       odyssey-mendelsohn, circe FR) : décider si on les **ré-extrait entières** (nouvelle règle
       « ne pas recadrer ») ou si on les garde telles quelles.
-- [ ] **Porter les styles scopés** de `books.html` / `road.html` (et de la piste logo retenue)
-      vers `styles.css`.
-- [ ] **`preview.html` / `preview2.html` divergent de `index.html`** (ils portent des essais logo).
-      Après décision : porter dans `index.html`, puis resynchroniser/nettoyer les bacs à sable.
+- [ ] **Porter les styles scopés** de `books.html` / `road.html` / de la modale logo (dans
+      `index.html`) vers `styles.css`.
+- [ ] **Nettoyer/resynchroniser les bacs à sable** : `index.html` = ex-`preview2` (modale).
+      `preview.html` (Option A non retenue) et `preview2.html` divergent — décider de les
+      resynchroniser sur le nouvel `index.html` ou de les supprimer.
 - [ ] (Option) CMS léger (Pages CMS) par-dessus les données si l'édition de fichier devient pénible.
 
 ## Repères
