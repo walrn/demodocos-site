@@ -63,7 +63,8 @@ const CONTENT = {
   logo_body: {
     el:"Ο Οδυσσέας ταξίδεψε ως τα όρια του Κάτω Κόσμου για να συμβουλευτεί τον Τειρεσία, τον θρυλικό τυφλό μάντη, για την επιστροφή του στην Ιθάκη. Ο μάντης του αποκάλυψε και τον δρόμο του γυρισμού και μια ακόμη προφητεία. Ως εξιλέωση επειδή τύφλωσε τον γιο του Ποσειδώνα και για την ίδια του την ύβρη, ο Οδυσσέας θα έπρεπε, μετά την επιστροφή του, να αφήσει ξανά τη γυναίκα και τον γιο του. Μ' ένα κουπί στον ώμο, θα έπρεπε να προχωρεί στην ενδοχώρα ώσπου να συναντήσει ανθρώπους που δεν γνωρίζουν τίποτα για καράβια και θάλασσα. Μόνο όταν ένας ξένος περάσει το κουπί για φτυάρι λιχνίσματος θα τελειώσει η δεύτερη οδύσσειά του. Εκεί θα το μπήξει στη γη, θα προσφέρει θυσίες και τελικά θα γυρίσει στο σπίτι του να ζήσει ειρηνικά τα υπόλοιπα του χρόνια.",
     en:"Odysseus journeyed to the edge of the Underworld to consult Tiresias, the legendary blind seer, about his return to Ithaca. The diviner revealed both the path home and a further prophecy. As atonement for blinding Poseidon's son and for his own hubris, Odysseus would have to abandon his wife and son once again after his return. Carrying an oar over his shoulder, he must wander inland until encountering people who know nothing of ships or the sea. Only when a stranger mistakes the oar for a winnowing fan will his second odyssey come to an end. There he will plant it in the earth, offer sacrifices and finally return home to live out his remaining years in peace.",
-    fr:"Ulysse descendit aux confins des Enfers pour consulter Tirésias, le légendaire devin aveugle, sur son retour à Ithaque. Le devin lui révéla à la fois le chemin du retour et une autre prophétie. Pour expier d'avoir aveuglé le fils de Poséidon et pour sa propre démesure, Ulysse devrait, une fois rentré, abandonner de nouveau sa femme et son fils. Une rame sur l'épaule, il lui faudrait marcher vers l'intérieur des terres jusqu'à rencontrer un peuple qui ignore tout des navires et de la mer. Ce n'est que lorsqu'un inconnu prendra la rame pour une pelle à vanner que sa seconde odyssée prendra fin. Là, il la plantera en terre, offrira des sacrifices, puis rentrera enfin chez lui pour couler en paix le reste de ses jours." },
+    fr:"Ulysse se rendit aux confins des Enfers afin de consulter Tirésias, le légendaire devin aveugle, au sujet de son retour à Ithaque. Le prophète lui révéla à la fois le chemin du retour et une autre prophétie. Pour expier l'aveuglement du fils de Poséidon et sa propre hubris, Ulysse devra, après son retour, abandonner une fois encore sa femme et son fils. Portant une rame sur l'épaule, il lui faudra errer vers l'intérieur des terres jusqu'à rencontrer des peuples qui ne connaissent rien des navires ni de la mer. Ce n'est que lorsqu'un étranger prendra la rame pour un van* que sa seconde odyssée prendra fin. Là, il plantera la rame dans la terre, offrira des sacrifices et rentrera enfin chez lui pour vivre en paix les années qui lui resteront." },
+  logo_note: { el:"", en:"", fr:"* van : instrument agricole servant à séparer le grain de la balle." },
 
   homer_epigraph: {
     el:"Ο ξακουστός τυφλός αοιδός Δημόδοκος τραγουδούσε, κι ο μέγας Οδυσσέας έλιωνε στα δάκρυα.",
@@ -157,6 +158,9 @@ const DEFAULT_LANG = "en";
   .logo-modal h2{font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 .6em}
   .logo-modal .txt{font-size:1.06rem;line-height:1.6;max-width:44ch;margin:0;
     overflow-wrap:break-word;text-align:justify;hyphens:auto}
+  .logo-modal .gloss{margin:.9em 0 0;max-width:44ch;font-size:.86rem;font-style:italic;
+    line-height:1.5;color:var(--text);opacity:.7}
+  .logo-modal .gloss:empty{display:none}
   .logo-modal .close{position:absolute;top:10px;right:14px;z-index:2;background:none;border:0;
     font-size:1.9rem;line-height:1;color:var(--ink);cursor:pointer;opacity:.6;padding:.1em .2em}
   .logo-modal .close:hover{opacity:1}
@@ -965,6 +969,7 @@ const DEFAULT_LANG = "en";
       <span class="label" data-i18n="logo_label"></span>
       <h2 id="logo-modal-title" data-i18n="logo_title"></h2>
       <p class="txt" data-i18n="logo_body"></p>
+      <p class="gloss" data-i18n="logo_note"></p>
     </div>
   </div>
 </dialog>
