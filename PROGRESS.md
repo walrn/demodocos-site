@@ -49,6 +49,18 @@ Les deux bacs à sable restent : `preview.html` (Option A, bloc replié — non 
 
 ## ⏳ À faire
 
+- [ ] **Grec — lot « style » (🟡) à appliquer si validé** (revue 12/07/2026). Fautes claires
+      DÉJÀ corrigées en ligne (« Η λιβραρί »→« Το βιβλιοπωλείο » ; logo « θα του πρέπει »→
+      « θα πρέπει » ; road *Island of Echoes* EL aligné → « …· το αφηγείται ένα παιδί του
+      νησιού »). **Restent proposés, non appliqués** :
+      accueil carte route « αναγνώσματα **των** νησιών »→« **για τα** νησιά » ;
+      café « όλος ο χρόνος **του κόσμου** »→sans « του κόσμου » (accueil + coffee.html) ;
+      « Nous trouver » « Περάστε **τη** μπλε πόρτα… Χαιρόμαστε που σας βλέπουμε »→
+      « Περάστε **από τη**… Θα χαρούμε να σας δούμε » ; carte café « προστατευτικά βιβλίων »→
+      « καλύμματα » (dépend du produit exact) ; « Le nom » « σε βρίσκει »→« σε αγγίζει » (option).
+- [ ] **Grec — Castoriadis (books.html) : relecture d'un natif** (🟠). *καταπιάνομαι* se
+      construit avec **με** (pas *σε*) ; « να ερωτούν τον κόσμο » un peu formel. NON touché
+      car le texte vient peut-être de l'édition grecque — à valider avec Christophe/un Grec.
 - [ ] **Relecture Christophe — textes du logo** (label « Notre logo » vs « emblème » ?,
       titre grec, formulation) — voir `drafts/logo-explanation.md`. **En ligne** en attendant.
 - [ ] **Relecture Christophe — `road.html`** : commentaires + titres des 3 livres et titres de
