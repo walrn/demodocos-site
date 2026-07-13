@@ -129,20 +129,29 @@ const DEFAULT_LANG = "en";
 
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* « Notre logo » — lien en bas à gauche du porteur de rame + modale d'explication.
-     Fond bleu ciel (= var(--wash), même que « What you'll find »), porteur de rame
-     en filigrane léger derrière le texte. (Scopé ici ; à porter dans styles.css.) */
-  /* boîte du logo : sert d'ancrage pour placer le lien en bas à gauche du porteur de rame */
-  .figure-stage .logo-wrap{position:relative;width:min(330px,80%);margin-inline:auto;line-height:0}
-  .figure-stage .logo-wrap svg.fig{width:100%}
+  /* La modale d'explication s'ouvre de DEUX façons (toutes deux branchées sur .js-logo-open) :
+     (1) le lien visible « Notre logo → » en bas à gauche du porteur de rame — comme en prod,
+         mais MASQUÉ sous le breakpoint mobile (là où il tombait près de l'eyebrow et cassait
+         la lecture) ;
+     (2) le porteur de rame lui-même, via un bouton transparent qui le couvre — reste le moyen
+         d'ouvrir la modale sur mobile. (Scopé ici ; à porter dans styles.css.) */
+  .figure-stage .logo-wrap{position:relative;width:min(330px,80%);margin-inline:auto;line-height:0;cursor:pointer}
+  .figure-stage .logo-wrap svg.fig{width:100%;transition:opacity .2s}
+  .figure-stage .logo-wrap:hover svg.fig{opacity:.82}   /* léger repli au survol → indique le clic */
   @media(max-width:680px){ .figure-stage .logo-wrap{width:min(220px,56%)} }
-  /* lien discret, en bas à gauche du logo (hors flux → ne casse pas la lecture) */
-  .logo-link{position:absolute;left:0;bottom:-1.6em;z-index:3;
+  /* (2) bouton transparent couvrant tout le logo — grande cible, déclencheur accessible partout */
+  .logo-btn{position:absolute;inset:0;z-index:3;margin:0;padding:0;background:none;border:0;cursor:pointer}
+  .logo-btn:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:4px}
+  .logo-btn .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}   /* libellé lecteurs d'écran, invisible */
+  /* (1) lien visible en bas à gauche (identique à la prod), masqué sur mobile */
+  .logo-link{position:absolute;left:0;bottom:-1.6em;z-index:4;
     background:none;border:0;cursor:pointer;padding:0;
     font-family:var(--body);text-transform:uppercase;letter-spacing:.18em;font-size:.62rem;
     color:var(--ink);opacity:.6;white-space:nowrap}
   .logo-link::after{content:" \2192"}
   .logo-link:hover{opacity:1}
+  @media(max-width:780px){ .logo-link{display:none} }
 
   dialog.logo-modal{box-sizing:border-box;width:92vw;max-width:560px;max-height:86vh;
     border:0;padding:0;background:var(--wash);color:var(--text);border-radius:6px;
@@ -228,7 +237,7 @@ const DEFAULT_LANG = "en";
       </div>
       <div class="figure-stage reveal">
         <div class="logo-wrap">
-        <svg class="fig" viewBox="0 0 2019.000000 2070.000000" fill="currentColor" role="img" aria-label="The oar-bearer"><g transform="translate(0.000000,2070.000000) scale(0.100000,-0.100000)"><path d="M3480 20265 c0 -8 -7 -15 -15 -15 -8 0 -15 -7 -15 -15 0 -8 -7 -15
+        <svg class="fig" viewBox="0 0 2019.000000 2070.000000" fill="currentColor" aria-hidden="true"><g transform="translate(0.000000,2070.000000) scale(0.100000,-0.100000)"><path d="M3480 20265 c0 -8 -7 -15 -15 -15 -8 0 -15 -7 -15 -15 0 -8 -7 -15
 -15 -15 -8 0 -15 -7 -15 -15 0 -8 -7 -15 -15 -15 -10 0 -15 -10 -15 -30 0 -20
 -5 -30 -15 -30 -8 0 -15 -7 -15 -15 0 -8 -7 -15 -15 -15 -10 0 -15 -10 -15
 -30 0 -20 -5 -30 -15 -30 -10 0 -15 -10 -15 -30 0 -20 -5 -30 -15 -30 -10 0
@@ -859,7 +868,8 @@ const DEFAULT_LANG = "en";
 15 30 8 0 15 7 15 15 0 8 7 15 15 15 10 0 15 10 15 30 0 20 5 30 15 30 8 0 15
 7 15 15 0 8 7 15 15 15 10 0 15 10 15 30 0 20 5 30 15 30 8 0 15 7 15 15 0 8
 7 15 15 15 10 0 15 10 15 30 0 27 3 30 30 30 27 0 30 -3 30 -30z"/></g></svg>
-          <button type="button" class="logo-link" id="logo-open" data-i18n="logo_link"></button>
+          <button type="button" class="logo-btn js-logo-open"><span class="sr-only" data-i18n="logo_link"></span></button>
+          <button type="button" class="logo-link js-logo-open" data-i18n="logo_link" aria-hidden="true" tabindex="-1"></button>
         </div>
       </div>
     </div>
@@ -977,21 +987,24 @@ const DEFAULT_LANG = "en";
 <script src="site.js"></script>
 <script>
 /* Modale « Notre logo » (propre à l'accueil). <dialog> natif : ouverture au clic sur le
-   lien près du logo, fermeture par la croix, l'Échap (natif) ou un clic sur le fond.
+   logo lui-même OU sur le lien « Notre logo » (tous deux .js-logo-open), fermeture par la
+   croix, l'Échap (natif) ou un clic sur le fond.
    On verrouille le défilement de la page derrière la fenêtre (sinon, sur iOS, c'est la
    page complète qui défile) ; le texte, lui, défile dans .inner. */
 (function(){
   "use strict";
   var dlg = document.getElementById("logo-modal");
-  var open = document.getElementById("logo-open");
+  var triggers = document.querySelectorAll(".js-logo-open");
   var close = document.getElementById("logo-close");
-  if(!dlg || !open) return;
+  if(!dlg || !triggers.length) return;
   var root = document.documentElement;
   function lock(){ root.style.overflow = "hidden"; }
   function unlock(){ root.style.overflow = ""; }
-  open.addEventListener("click", function(){
-    if(typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open","");
-    lock();
+  triggers.forEach(function(el){
+    el.addEventListener("click", function(){
+      if(typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open","");
+      lock();
+    });
   });
   if(close) close.addEventListener("click", function(){ dlg.close(); });
   // clic sur le fond (backdrop) : la cible est le <dialog> lui-même
