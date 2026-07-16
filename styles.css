@@ -203,6 +203,8 @@
     text-transform:uppercase;color:var(--ink);opacity:.75;transition:opacity .2s}
   .back-link::before{content:"\2190  "}
   .back-link:hover{opacity:1}
+  /* en bas de page : dégagé du contenu, plus de marge sous le titre (le haut s'ouvre sur le titre) */
+  .back-link.at-foot{margin-bottom:0;margin-top:clamp(40px,6vw,64px)}
   .page-head{margin-bottom:clamp(28px,4vw,46px)}
   .page-head .label{display:block;margin-bottom:.9em}
   .page-head h1{font-size:clamp(2.2rem,6vw,4rem)}
