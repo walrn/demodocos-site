@@ -203,11 +203,12 @@
     text-transform:uppercase;color:var(--ink);opacity:.75;transition:opacity .2s}
   .back-link::before{content:"\2190  "}
   .back-link:hover{opacity:1}
-  /* lien retour EN HAUT : toujours sur sa propre ligne, AU-DESSUS du label et aligné à droite
-     (même quand les deux tiendraient côte à côte). order:-1 le remonte au-dessus du label. */
-  .ph-eyebrow{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:.9em}
-  .ph-eyebrow .back-link{order:-1;align-self:flex-end;margin:0 0 .7em}
-  .ph-eyebrow .label{margin-bottom:0}
+  /* lien retour EN HAUT : remonté juste sous la ligne de l'en-tête. La marge négative annule
+     la majeure partie du padding de section (→ ~20px sous l'en-tête), la marge basse remet
+     le bloc titre à sa place → le lien est bien écarté de l'eyebrow. Aligné à droite. */
+  .ph-back{text-align:right;
+    margin-top:calc(20px - clamp(58px,9vw,108px));
+    margin-bottom:calc(clamp(58px,9vw,108px) - 9px)}
   /* lien retour EN BAS : bien dégagé du contenu */
   .back-link.at-foot{margin-bottom:0;margin-top:clamp(72px,10vw,110px)}
   .page-head{margin-bottom:clamp(28px,4vw,46px)}
