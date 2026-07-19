@@ -64,7 +64,12 @@
 const CONTENT = {
   doc_title:   { el:"Βιβλία & δώρα · Δημόδοκος", en:"Books & Gifts · Demodocos", fr:"Livres et cadeaux · Demodocos" },
   back_home:   { el:"Πίσω στην αρχική", en:"Back to home", fr:"Retour à l'accueil" },
-
+  nav_name:       { el:"Το όνομα",      en:"The name",     fr:"Le nom" },
+  nav_shop:       { el:"Το βιβλιοπωλείο", en:"The shop",     fr:"La librairie" },
+  nav_books:      { el:"Βιβλία",        en:"Books",        fr:"Livres" },
+  nav_cafe:       { el:"Καφές",         en:"Coffee",       fr:"Café" },
+  nav_road:       { el:"Για τον δρόμο", en:"For the road", fr:"Pour la route" },
+  nav_find:       { el:"Πού είμαστε",   en:"Find us",      fr:"Nous trouver" },
   books_label: { el:"Διαλεχτά", en:"Hand-picked", fr:"Choisis à la main" },
   books_title: { el:"Βιβλία & δώρα", en:"Books & Gifts", fr:"Livres et cadeaux" },
   books_intro: {
@@ -203,7 +208,18 @@ const DEFAULT_LANG = "en";
 
 <header>
   <div class="wrap bar">
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+    </button>
     <a class="brand" href="index.html"><img class="brand-logo" src="assets/oar-bearer.svg" alt="" aria-hidden="true" width="2019" height="2070"><span class="brand-name"><span class="gr">Δημόδοκος</span><span class="lat">Demodocos Books</span></span></a>
+    <nav class="links" id="primary-nav">
+      <a href="index.html#name" data-i18n="nav_name"></a>
+      <a href="index.html#shop" data-i18n="nav_shop"></a>
+      <a class="sub" href="books.html" data-i18n="nav_books"></a>
+      <a class="sub" href="coffee.html" data-i18n="nav_cafe"></a>
+      <a class="sub" href="road.html" data-i18n="nav_road"></a>
+      <a href="index.html#find" data-i18n="nav_find"></a>
+    </nav>
     <div class="langs" role="group" aria-label="Language">
       <button data-lang="el">EL</button><span class="sep">·</span>
       <button data-lang="en">EN</button><span class="sep">·</span>

@@ -1029,22 +1029,6 @@ const DEFAULT_LANG = "en";
 
 <script src="site.js"></script>
 <script>
-/* Menu mobile (burger) : ouvre/ferme le menu quand « The name / The shop / Find us » sont
-   masqués (≤760px). Ferme au clic sur un lien, à l'Échap, ou au clic en dehors. */
-(function(){
-  var btn = document.getElementById("nav-toggle");
-  var nav = document.getElementById("primary-nav");
-  if(!btn || !nav) return;
-  function setOpen(o){ nav.classList.toggle("open", o); btn.setAttribute("aria-expanded", o ? "true" : "false"); }
-  btn.addEventListener("click", function(e){ e.stopPropagation(); setOpen(!nav.classList.contains("open")); });
-  nav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ setOpen(false); }); });
-  document.addEventListener("keydown", function(e){ if(e.key === "Escape") setOpen(false); });
-  document.addEventListener("click", function(e){
-    if(nav.classList.contains("open") && !nav.contains(e.target) && !btn.contains(e.target)) setOpen(false);
-  });
-})();
-</script>
-<script>
 /* Bandeau évènement : masqué s'il n'y a pas de texte (semaine sans évènement), y compris
    après un changement de langue (site.js réécrit le texte au clic sur EL/EN/FR). */
 (function(){
