@@ -51,6 +51,7 @@
   nav.links a{font-size:.82rem;letter-spacing:.13em;text-transform:uppercase;
     color:var(--text);opacity:.78;transition:opacity .2s}
   nav.links a:hover{opacity:1;color:var(--ink)}
+  nav.links a.sub{display:none}   /* sous-pages de « The shop » : uniquement dans le menu mobile */
   /* Burger (mobile seulement) — traits fins cobalt, sobre ; se transforme en croix à l'ouverture */
   .nav-toggle{display:none;align-items:center;justify-content:center;
     width:40px;height:40px;margin-left:-9px;padding:0;background:none;border:0;cursor:pointer;color:var(--ink)}
@@ -82,6 +83,7 @@
     nav.links.open{display:flex}
     nav.links a{padding:13px 0;font-size:.82rem;opacity:.82;border-top:1px solid var(--line)}
     nav.links a:first-child{border-top:0}
+    nav.links a.sub{display:block;padding-left:20px;font-size:.76rem;opacity:.68}   /* en retrait sous « The shop » */
   }
   @media(max-width:600px){ .brand .lat{display:none} }   /* wordmark : Δημόδοκος seul dès 600px (le latin faisait déborder l'en-tête) */
   @media(max-width:560px){

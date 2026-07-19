@@ -37,6 +37,9 @@ const CONTENT = {
   /* ----- Menu du haut ----- */
   nav_name:       { el:"Το όνομα",      en:"The name",   fr:"Le nom" },
   nav_shop:       { el:"Το βιβλιοπωλείο", en:"The shop",   fr:"La librairie" },
+  nav_books:      { el:"Βιβλία",        en:"Books",        fr:"Livres" },
+  nav_cafe:       { el:"Καφές",         en:"Coffee",       fr:"Café" },
+  nav_road:       { el:"Για τον δρόμο", en:"For the road", fr:"Pour la route" },
   nav_find:       { el:"Πού είμαστε",   en:"Find us",    fr:"Nous trouver" },
 
   /* ----- Accueil ----- */
@@ -239,6 +242,9 @@ const DEFAULT_LANG = "en";
     <nav class="links" id="primary-nav">
       <a href="#name" data-i18n="nav_name"></a>
       <a href="#shop" data-i18n="nav_shop"></a>
+      <a class="sub" href="books.html" data-i18n="nav_books"></a>
+      <a class="sub" href="coffee.html" data-i18n="nav_cafe"></a>
+      <a class="sub" href="road.html" data-i18n="nav_road"></a>
       <a href="#find" data-i18n="nav_find"></a>
     </nav>
     <div class="langs" role="group" aria-label="Language">
