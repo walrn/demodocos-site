@@ -53,7 +53,7 @@ const CONTENT = {
      Pour changer l'évènement mis en avant : modifier les 3 lignes ci-dessous.
      Pour MASQUER le bandeau (semaine sans évènement) : mettre banner_text à "" (el/en/fr). */
   banner_eyebrow: { el:"Αυτή την εβδομάδα", en:"This week", fr:"Cette semaine" },
-  banner_text:    { el:"Η Mildred Simantov παρουσιάζει το «Plage arrière»", en:"Mildred Simantov presents \"Plage arrière\"", fr:"Mildred Simantov présente « Plage arrière »" },
+  banner_text:    { el:"Η Mildred Simantov παρουσιάζει το «Plage arrière»", en:"Mildred Simantov presents \"Plage arrière\"", fr:"Mildred Simantov présente « Plage arrière »" },
   banner_date:    { el:"Τετάρτη 22 Ιουλίου · 18:00", en:"Wednesday 22 July · 6pm", fr:"mercredi 22 juillet · 18h" },
 
   /* ----- Le nom / l'histoire ----- */
@@ -187,18 +187,21 @@ const DEFAULT_LANG = "en";
     .logo-modal h2{font-size:1.4rem}
   }
 
-  /* Bandeau « évènement de la semaine » : filet fin sous l'en-tête, cliquable → events.html.
-     (Scopé ici ; à porter dans styles.css.) */
+  /* Bandeau « évènement de la semaine » : sous l'en-tête, cliquable → events.html.
+     Pile centrée IDENTIQUE mobile/laptop (aucun CSS séparé par taille) : eyebrow (quasi-noir)
+     + titre (Playfair 600, cobalt, agrandi) + date. (Scopé ici ; à porter dans styles.css.) */
   .event-banner{display:block;background:var(--wash);border-bottom:1px solid var(--line);
     color:var(--ink);text-decoration:none;font-family:var(--body)}
   .event-banner[hidden]{display:none}
-  .event-banner .eb-inner{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;
-    gap:.4em 1em;text-align:center;padding-top:11px;padding-bottom:11px}
-  .event-banner .eb-eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:.68rem;
-    font-weight:600;opacity:.75}
-  .event-banner .eb-text{font-family:var(--display);font-weight:600;font-size:1.06rem;line-height:1.2}
-  .event-banner .eb-date{font-size:.82rem;letter-spacing:.02em;opacity:.85}
-  .event-banner .eb-arrow{font-size:.95rem;transition:transform .2s}
+  .event-banner .eb-inner{display:flex;flex-direction:column;align-items:center;text-align:center;
+    gap:.28em;padding-top:14px;padding-bottom:14px}
+  .event-banner .eb-eyebrow{text-transform:uppercase;letter-spacing:.24em;font-size:.74rem;
+    font-weight:600;color:var(--text)}
+  .event-banner .eb-text{font-family:var(--display);font-weight:600;font-size:1.3rem;line-height:1.24;
+    color:var(--ink)}
+  .event-banner .eb-meta{display:inline-flex;align-items:center;gap:.55em;
+    font-size:.92rem;letter-spacing:.02em;color:var(--text);opacity:.9}
+  .event-banner .eb-arrow{transition:transform .2s}
   .event-banner:hover .eb-text{text-decoration:underline;text-underline-offset:3px}
   .event-banner:hover .eb-arrow{transform:translateX(3px)}
 </style>
@@ -248,8 +251,7 @@ const DEFAULT_LANG = "en";
   <span class="eb-inner wrap">
     <span class="eb-eyebrow" data-i18n="banner_eyebrow"></span>
     <span class="eb-text" data-i18n="banner_text"></span>
-    <span class="eb-date" data-i18n="banner_date"></span>
-    <span class="eb-arrow" aria-hidden="true">→</span>
+    <span class="eb-meta"><span class="eb-date" data-i18n="banner_date"></span><span class="eb-arrow" aria-hidden="true">→</span></span>
   </span>
 </a>
 
