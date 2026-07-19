@@ -49,6 +49,13 @@ const CONTENT = {
   hero_attr:      { el:"— Κ. Π. Καβάφης, Ιθάκη", en:"— C. P. Cavafy, Ithaka", fr:"— C. P. Cavafy, Ithaque" },
   hero_scroll:    { el:"Συνεχίστε", en:"Read on", fr:"Lire la suite" },
 
+  /* ----- Bandeau « évènement de la semaine » (accueil → page Événements) -----
+     Pour changer l'évènement mis en avant : modifier les 3 lignes ci-dessous.
+     Pour MASQUER le bandeau (semaine sans évènement) : mettre banner_text à "" (el/en/fr). */
+  banner_eyebrow: { el:"Αυτή την εβδομάδα", en:"This week", fr:"Cette semaine" },
+  banner_text:    { el:"Η Mildred Simantov παρουσιάζει το «Plage arrière»", en:"Mildred Simantov presents \"Plage arrière\"", fr:"Mildred Simantov présente « Plage arrière »" },
+  banner_date:    { el:"Τετάρτη 22 Ιουλίου · 18:00", en:"Wednesday 22 July · 6pm", fr:"mercredi 22 juillet · 18h" },
+
   /* ----- Le nom / l'histoire ----- */
   name_label:     { el:"Το όνομα", en:"The name", fr:"Le nom" },
   name_title:     { el:"Δημόδοκος", en:"Demodocos", fr:"Démodocos" },
@@ -179,6 +186,21 @@ const DEFAULT_LANG = "en";
     .logo-modal .txt{font-size:.94rem;line-height:1.58}
     .logo-modal h2{font-size:1.4rem}
   }
+
+  /* Bandeau « évènement de la semaine » : filet fin sous l'en-tête, cliquable → events.html.
+     (Scopé ici ; à porter dans styles.css.) */
+  .event-banner{display:block;background:var(--wash);border-bottom:1px solid var(--line);
+    color:var(--ink);text-decoration:none;font-family:var(--body)}
+  .event-banner[hidden]{display:none}
+  .event-banner .eb-inner{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;
+    gap:.4em 1em;text-align:center;padding-top:11px;padding-bottom:11px}
+  .event-banner .eb-eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:.68rem;
+    font-weight:600;opacity:.75}
+  .event-banner .eb-text{font-family:var(--display);font-weight:600;font-size:1.06rem;line-height:1.2}
+  .event-banner .eb-date{font-size:.82rem;letter-spacing:.02em;opacity:.85}
+  .event-banner .eb-arrow{font-size:.95rem;transition:transform .2s}
+  .event-banner:hover .eb-text{text-decoration:underline;text-underline-offset:3px}
+  .event-banner:hover .eb-arrow{transform:translateX(3px)}
 </style>
 </head>
 <body>
@@ -220,6 +242,16 @@ const DEFAULT_LANG = "en";
     </div>
   </div>
 </header>
+
+<!-- Bandeau « évènement de la semaine » — masqué automatiquement si banner_text est vide -->
+<a class="event-banner" id="event-banner" href="events.html">
+  <span class="eb-inner wrap">
+    <span class="eb-eyebrow" data-i18n="banner_eyebrow"></span>
+    <span class="eb-text" data-i18n="banner_text"></span>
+    <span class="eb-date" data-i18n="banner_date"></span>
+    <span class="eb-arrow" aria-hidden="true">→</span>
+  </span>
+</a>
 
 <main>
   <!-- ACCUEIL -->
@@ -985,6 +1017,20 @@ const DEFAULT_LANG = "en";
 </dialog>
 
 <script src="site.js"></script>
+<script>
+/* Bandeau évènement : masqué s'il n'y a pas de texte (semaine sans évènement), y compris
+   après un changement de langue (site.js réécrit le texte au clic sur EL/EN/FR). */
+(function(){
+  var b = document.getElementById("event-banner");
+  if(!b) return;
+  var t = b.querySelector(".eb-text");
+  function upd(){ if(t && t.textContent.trim()) b.removeAttribute("hidden"); else b.setAttribute("hidden",""); }
+  upd();
+  document.querySelectorAll(".langs button").forEach(function(btn){
+    btn.addEventListener("click", function(){ setTimeout(upd, 0); });
+  });
+})();
+</script>
 <script>
 /* Modale « Notre logo » (propre à l'accueil). <dialog> natif : ouverture au clic sur le
    logo lui-même OU sur le lien « Notre logo » (tous deux .js-logo-open), fermeture par la
