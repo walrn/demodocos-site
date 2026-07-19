@@ -41,8 +41,10 @@
     backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .bar{display:flex;align-items:center;justify-content:space-between;
     gap:16px;height:62px}
-  .brand{display:flex;align-items:baseline;gap:.5em;font-family:var(--display);
+  .brand{display:flex;align-items:center;gap:.55em;font-family:var(--display);
     color:var(--ink);white-space:nowrap}
+  .brand-logo{height:36px;width:auto;flex:none;display:block}   /* porteur de rame, petit, collé à gauche */
+  .brand-name{display:inline-flex;align-items:baseline;gap:.5em}   /* le wordmark garde sa ligne de base interne */
   .brand .gr{font-size:1.05rem;font-weight:600}
   .brand .lat{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;opacity:.65}
   nav.links{display:flex;gap:26px;align-items:center}
