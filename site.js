@@ -110,4 +110,18 @@
       if(navMenu.classList.contains("open") && !navMenu.contains(e.target) && !navBtn.contains(e.target)) setNav(false);
     });
   }
+
+  // Logo / titre de l'en-tête : si le lien pointe vers la page courante (accueil depuis
+  // l'accueil), on remonte en haut en douceur au lieu de recharger ; sinon lien normal.
+  const brand = document.querySelector("a.brand");
+  if(brand){
+    const norm = p => (p.replace(/index\.html$/, "").replace(/\/+$/, "") || "/");
+    brand.addEventListener("click", e=>{
+      const url = new URL(brand.href, location.href);
+      if(!url.hash && norm(url.pathname) === norm(location.pathname)){
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  }
 })();
