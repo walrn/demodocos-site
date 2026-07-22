@@ -209,10 +209,17 @@ const DEFAULT_LANG = "en";
 
 <header>
   <div class="wrap bar">
-    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
-      <span class="nav-toggle-bars" aria-hidden="true"></span>
-    </button>
-    <a class="brand" href="index.html"><img class="brand-logo" src="assets/oar-bearer.svg" alt="" aria-hidden="true" width="2019" height="2070"><span class="brand-name"><span class="gr">Δημόδοκος</span><span class="lat">Demodocos Books</span></span></a>
+    <div class="bar-left">
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <a class="brand" href="index.html"><img class="brand-logo" src="assets/oar-bearer.svg" alt="" aria-hidden="true" width="2019" height="2070"><span class="brand-name"><span class="gr">Δημόδοκος</span><span class="lat">Demodocos Books</span></span></a>
+    </div>
+    <nav class="links-inline" aria-label="Sections">
+      <a href="index.html#name" data-i18n="nav_name"></a>
+      <a href="index.html#shop" data-i18n="nav_shop"></a>
+      <a href="index.html#find" data-i18n="nav_find"></a>
+    </nav>
     <nav class="links" id="primary-nav">
       <a href="index.html#name" data-i18n="nav_name"></a>
       <a href="index.html#shop" data-i18n="nav_shop"></a>

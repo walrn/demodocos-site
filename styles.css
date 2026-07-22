@@ -47,13 +47,17 @@
   .brand-name{display:inline-flex;align-items:baseline;gap:.5em}   /* le wordmark garde sa ligne de base interne */
   .brand .gr{font-size:1.05rem;font-weight:600}
   .brand .lat{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;opacity:.65}
-  nav.links{display:flex;gap:26px;align-items:center}
-  nav.links a{font-size:.82rem;letter-spacing:.13em;text-transform:uppercase;
+  .bar-left{display:flex;align-items:center;gap:8px}   /* burger + logo, collés à gauche */
+
+  /* Nav inline (niveau 1) — visible en desktop pour un accès rapide ; masquée sous le
+     breakpoint (le burger prend le relais). Le menu complet reste dans le burger. */
+  .links-inline{display:flex;gap:26px;align-items:center}
+  .links-inline a{font-size:.82rem;letter-spacing:.13em;text-transform:uppercase;
     color:var(--text);opacity:.78;transition:opacity .2s}
-  nav.links a:hover{opacity:1;color:var(--ink)}
-  nav.links a.sub{display:none}   /* sous-pages de « The shop » : uniquement dans le menu mobile */
-  /* Burger (mobile seulement) — traits fins cobalt, sobre ; se transforme en croix à l'ouverture */
-  .nav-toggle{display:none;align-items:center;justify-content:center;
+  .links-inline a:hover{opacity:1;color:var(--ink)}
+
+  /* Burger PERMANENT (toutes largeurs) — traits fins cobalt, se transforme en croix à l'ouverture */
+  .nav-toggle{display:inline-flex;align-items:center;justify-content:center;
     width:40px;height:40px;margin-left:-9px;padding:0;background:none;border:0;cursor:pointer;color:var(--ink)}
   .nav-toggle-bars,.nav-toggle-bars::before,.nav-toggle-bars::after{
     content:"";display:block;width:21px;height:1.5px;background:currentColor;border-radius:2px;
@@ -73,18 +77,18 @@
   .langs button[aria-pressed="true"]{opacity:1;color:var(--ink);
     text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1.5px}
   .langs .sep{opacity:.3}
-  @media(max-width:760px){
-    .nav-toggle{display:inline-flex}   /* le burger apparaît quand le menu texte se masque */
-    .brand{margin-right:auto}          /* logo + wordmark collés à gauche, langues à droite */
-    nav.links{position:absolute;top:100%;left:0;right:0;z-index:19;
-      display:none;flex-direction:column;align-items:stretch;gap:0;
-      background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 14px 26px rgba(10,46,99,.07);
-      padding:2px clamp(28px,4vw,56px) 10px}
-    nav.links.open{display:flex}
-    nav.links a{padding:13px 0;font-size:.82rem;opacity:.82;border-top:1px solid var(--line)}
-    nav.links a:first-child{border-top:0}
-    nav.links a.sub{display:block;padding-left:20px;font-size:.76rem;opacity:.68}   /* en retrait sous « The shop » */
-  }
+  /* Menu complet = panneau déroulant sous l'en-tête, à TOUTES les largeurs, ouvert par le burger */
+  nav.links{position:absolute;top:100%;left:0;right:0;z-index:19;
+    display:none;flex-direction:column;align-items:stretch;gap:0;
+    background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 14px 26px rgba(10,46,99,.07);
+    padding:2px clamp(28px,4vw,56px) 10px}
+  nav.links.open{display:flex}
+  nav.links a{padding:13px 0;font-size:.82rem;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--text);opacity:.82;border-top:1px solid var(--line);transition:opacity .2s}
+  nav.links a:hover{opacity:1;color:var(--ink)}
+  nav.links a:first-child{border-top:0}
+  nav.links a.sub{padding-left:20px;font-size:.76rem;opacity:.68}   /* en retrait sous « The shop » */
+  @media(max-width:760px){ .links-inline{display:none} }   /* sous le breakpoint : seul le burger */
   @media(max-width:600px){ .brand .lat{display:none} }   /* wordmark : Δημόδοκος seul dès 600px (le latin faisait déborder l'en-tête) */
   @media(max-width:560px){
     .langs .sep{display:none}   /* séparateurs · retirés sous le breakpoint */
