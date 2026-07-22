@@ -24,9 +24,7 @@ Site trilingue : grec · anglais · français.
   les pages.
 - `preview.html` : page de test (`noindex`, hors navigation publique), copie de
   l'accueil avec les liens des cartes actifs + un repère « PAGE DE TEST ». Sert
-  de bac à sable pour de nouvelles propositions de design. Les cartes de
-  l'accueil public sont, elles, non cliquables tant que les images des
-  sous-pages ne sont pas prêtes.
+  de bac à sable pour de nouvelles propositions de design. Les cartes de l'accueil renvoient vers les sous-pages détaillées (Livres / Café / Route).
 - Photos dans `assets/` ; favicons à la racine.
 - Le texte des trois langues vit dans un objet **`ZONE À MODIFIER`** en haut de
   **chaque page** — c'est la seule partie à éditer pour changer le contenu.
