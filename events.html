@@ -237,7 +237,7 @@ const DEFAULT_LANG = "en";
     const t = esc(b.titre), d = esc(b.date || "");
     const cover = b.photo
       ? '<div class="cover"><button type="button" class="zoom" data-zoom aria-label="' + esc(ZOOM[lang]) + ' : ' + t + '">'
-          + '<img src="' + esc(photoSrc(b.photo)) + '" alt="' + t + '" loading="lazy"></button></div>'
+          + '<picture><source srcset="' + esc(photoSrc(b.photo).replace(/\.jpe?g$/i, ".webp")) + '" type="image/webp"><img src="' + esc(photoSrc(b.photo)) + '" alt="' + t + '" loading="lazy"></picture></button></div>'
       : '<div class="cover is-fallback" aria-hidden="true"><img src="assets/livre-demodocos.png" alt=""></div>';
     const comment = b.paras.map(p => '<p>' + esc(p) + '</p>').join("");
     return '<article class="eventrow">' + cover
