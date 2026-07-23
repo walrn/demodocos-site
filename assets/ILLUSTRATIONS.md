@@ -29,7 +29,7 @@ habiller les pages.
 | `lyre-demodocos.png` | Lyre | ligne 1, 2ᵉ depuis la droite | carte « For the road » |
 | `porte-demodocos.png` | Porte + marches (arche complète) | bas-droite | section « Find us » |
 | `chat-demodocos.png` | Chat (loaf, yeux blancs) | milieu-droite | pied de page (affiché ×1.5) |
-| `table-demodocos.png` | Table + 2 chaises + livre (libellé « Demodocos » retiré) | bas-gauche | **non utilisé** — gardé de côté (jugé trop détaillé pour une icône de carte) |
+| `table-demodocos.png` | Table + 2 chaises + livre (libellé « Demodocos » retiré) | bas-gauche | **page 404** (`404.html`, hors nav publique). La même illustration, **libellé conservé**, sert aussi de carte de partage social → `assets/og-card.jpg` (1200×630, croquis fondu sur le fond papier, cf. ci-dessous) |
 
 ## Conventions d'intégration
 

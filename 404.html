@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page introuvable — Demodocos Books</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Page 404 — mise en page centrée, sobre. Réutilise les variables et les
+     polices de styles.css. On combine .wrap avec .nf : pas de raccourci
+     « padding: » (il écraserait le padding horizontal de .wrap) — on n'utilise
+     que padding-top / padding-bottom. */
+  .nf{max-width:640px;text-align:center;
+    padding-top:clamp(48px,9vw,96px);padding-bottom:clamp(64px,11vw,120px)}
+  .nf-illo{width:min(300px,72%);height:auto;display:block;margin:0 auto 10px;opacity:.9}
+  .nf-code{font-family:var(--body);text-transform:uppercase;letter-spacing:.34em;
+    font-size:.8rem;color:var(--ink);opacity:.7;margin:0 0 .8em}
+  .nf-line{font-family:var(--display);font-style:italic;color:var(--ink);
+    line-height:1.3;margin:.12em 0}
+  .nf-line[lang="fr"]{font-size:clamp(1.5rem,4.4vw,1.9rem)}
+  .nf-line[lang="en"],.nf-line[lang="el"]{font-size:1.15rem;opacity:.72}
+  .nf-back{margin-top:1.9em;font-size:.98rem}
+  .nf-back a{border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .2s}
+  .nf-back a:hover{border-color:var(--ink)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="/"><img class="brand-logo" src="assets/oar-bearer.svg" alt="" aria-hidden="true" width="2019" height="2070"><span class="brand-name"><span class="gr">Δημόδοκος</span><span class="lat">Demodocos Books</span></span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap nf">
+  <img class="nf-illo" src="assets/table-demodocos.png" alt="Une table et deux chaises avec un livre ouvert" width="460" height="366">
+  <p class="nf-code">404</p>
+  <p class="nf-line" lang="fr">Cette page a pris le large.</p>
+  <p class="nf-line" lang="en">This page has drifted out to sea.</p>
+  <p class="nf-line" lang="el">Αυτή η σελίδα χάθηκε στο πέλαγος.</p>
+  <p class="nf-back"><a href="/">Retour à l'accueil · Back home · Αρχική</a></p>
+</main>
+</body>
+</html>
