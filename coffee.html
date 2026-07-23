@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#104898">
 <title>Coffee · Demodocos</title>
 <link rel="canonical" href="https://demodocos-books.eu/coffee.html">
 <meta property="og:type" content="website">
@@ -36,6 +37,7 @@
      ═════════════════════════════════════════════════════════════════════ -->
 <script>
 const CONTENT = {
+  skip_link:      { el:"Μετάβαση στο περιεχόμενο", en:"Skip to content", fr:"Aller au contenu" },
   doc_title:    { el:"Καφές · Δημόδοκος", en:"Coffee · Demodocos", fr:"Café · Demodocos" },
   back_home:    { el:"Πίσω στην αρχική", en:"Back to home", fr:"Retour à l'accueil" },
   nav_name:       { el:"Το όνομα",      en:"The name",     fr:"Le nom" },
@@ -62,6 +64,7 @@ const DEFAULT_LANG = "en";
 <!-- ═══════════════ FIN DE LA ZONE À MODIFIER ═══════════════ -->
 </head>
 <body>
+<a class="skip-link" href="#main" data-i18n="skip_link">Aller au contenu</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-cat" viewBox="0 0 48 44" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -99,7 +102,7 @@ const DEFAULT_LANG = "en";
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="section">
     <div class="wrap">
       <div class="page-head reveal">

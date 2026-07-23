@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#104898">
 <meta name="google-site-verification" content="bmaRLU1P5XqCJYdTUb9qqTUjNGtjZnTm5DRgJ8FaScw">
 <title>Demodocos Books — Librairie & café à Ios, Cyclades (Grèce)</title>
 <meta name="description" content="Demodocos Books (Δημόδοκος Βιβλία) — librairie & café indépendante à Ios, dans les Cyclades (Grèce). Des livres en grec, anglais et français, et un café à l'ombre.">
@@ -71,6 +72,7 @@
      ════════════════════════════════════════════════════════════════════ -->
 <script>
 const CONTENT = {
+  skip_link:      { el:"Μετάβαση στο περιεχόμενο", en:"Skip to content", fr:"Aller au contenu" },
 
   /* ----- Onglet du navigateur ----- */
   doc_title:      { el:"Δημόδοκος Βιβλία — Βιβλιοπωλείο & καφέ, Ίος (Κυκλάδες)", en:"Demodocos Books — Bookshop & café on Ios, Cyclades, Greece", fr:"Demodocos Books — Librairie & café à Ios, Cyclades (Grèce)" },
@@ -253,6 +255,7 @@ const DEFAULT_LANG = "en";
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main" data-i18n="skip_link">Aller au contenu</a>
 
 <!-- jeu d'icônes (réutilisées par <use>) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -315,7 +318,7 @@ const DEFAULT_LANG = "en";
   </span>
 </a>
 
-<main>
+<main id="main">
   <!-- ACCUEIL -->
   <section class="hero">
     <div class="wrap hero-grid">

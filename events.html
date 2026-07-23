@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#104898">
 <title>Events · Demodocos</title>
 <link rel="canonical" href="https://demodocos-books.eu/events.html">
 <meta property="og:type" content="website">
@@ -72,6 +73,7 @@
      ═══════════════════════════════════════════════════════════════════════════════════ -->
 <script>
 const CONTENT = {
+  skip_link:      { el:"Μετάβαση στο περιεχόμενο", en:"Skip to content", fr:"Aller au contenu" },
   doc_title:      { el:"Εκδηλώσεις · Δημόδοκος", en:"Events · Demodocos", fr:"Événements · Demodocos" },
   back_home:      { el:"Πίσω στην αρχική", en:"Back to home", fr:"Retour à l'accueil" },
   nav_name:       { el:"Το όνομα",      en:"The name",     fr:"Le nom" },
@@ -138,6 +140,7 @@ const DEFAULT_LANG = "en";
 <!-- ═══════════════ FIN DE LA ZONE À MODIFIER ═══════════════ -->
 </head>
 <body>
+<a class="skip-link" href="#main" data-i18n="skip_link">Aller au contenu</a>
 
 <header>
   <div class="wrap bar">
@@ -169,7 +172,7 @@ const DEFAULT_LANG = "en";
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="section">
     <div class="wrap">
       <div class="page-head reveal">

@@ -105,7 +105,7 @@
     const setNav = (o)=>{ navMenu.classList.toggle("open", o); navBtn.setAttribute("aria-expanded", o ? "true" : "false"); };
     navBtn.addEventListener("click", e=>{ e.stopPropagation(); setNav(!navMenu.classList.contains("open")); });
     navMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", ()=> setNav(false)));
-    document.addEventListener("keydown", e=>{ if(e.key === "Escape") setNav(false); });
+    document.addEventListener("keydown", e=>{ if(e.key === "Escape" && navMenu.classList.contains("open")){ setNav(false); navBtn.focus(); } });
     document.addEventListener("click", e=>{
       if(navMenu.classList.contains("open") && !navMenu.contains(e.target) && !navBtn.contains(e.target)) setNav(false);
     });
