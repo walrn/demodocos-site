@@ -30,7 +30,7 @@
     font-size:.74rem;font-weight:600;color:var(--ink);}
   .epigraph{font-family:var(--display);font-style:italic;font-weight:400;
     color:var(--ink);line-height:1.35;}
-  .attr{font-size:.82em;font-style:italic;color:var(--ink);opacity:.7;letter-spacing:.04em}
+  .attr{font-size:.82em;font-style:italic;color:var(--ink);opacity:.8;letter-spacing:.04em}
 
   a{color:var(--ink);text-decoration:none}
   a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
@@ -71,7 +71,7 @@
   .langs{display:flex;gap:2px;align-items:center;font-size:.74rem;letter-spacing:.08em;
     margin-right:-9px}   /* compense le padding-droit du bouton → gouttière droite = gouttière gauche du logo */
   .langs button{background:none;border:0;cursor:pointer;color:var(--text);
-    opacity:.55;padding:13px 9px;font:inherit;text-transform:uppercase;letter-spacing:.1em;
+    opacity:.7;padding:13px 9px;font:inherit;text-transform:uppercase;letter-spacing:.1em;
     transition:opacity .2s,color .2s}   /* padding vertical porté à 13px → cible tactile ≈ 44px */
   .langs button:hover{opacity:.9}
   .langs button[aria-pressed="true"]{opacity:1;color:var(--ink);
@@ -114,7 +114,7 @@
     display:block}
   .scroll-cue{display:flex;justify-content:center;padding-bottom:30px}
   .scroll-cue a{font-family:var(--body);text-transform:uppercase;letter-spacing:.24em;
-    font-size:.72rem;color:var(--ink);opacity:.7;display:inline-flex;flex-direction:column;
+    font-size:.72rem;color:var(--ink);opacity:.8;display:inline-flex;flex-direction:column;
     align-items:center;gap:8px}
   .scroll-cue .arr{width:1px;height:34px;background:var(--ink);opacity:.6;
     animation:drop 2.4s ease-in-out infinite}
@@ -193,7 +193,7 @@
   footer .cat{width:46px;height:auto;color:var(--ink);opacity:.8;margin-bottom:18px}
   footer .fbrand{font-family:var(--display);color:var(--ink);font-size:1.5rem;font-weight:600}
   footer .flat{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--text);opacity:.6;margin-top:.4em}
+    color:var(--text);opacity:.7;margin-top:.4em}
   footer .ftag{font-style:italic;color:var(--text);opacity:.8;margin-top:1.1em}
   footer .flink{display:inline-block;margin-top:1.4em;font-size:.8rem;letter-spacing:.12em;
     text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:3px}
