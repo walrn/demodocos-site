@@ -31,7 +31,7 @@ habiller les pages.
 | `chat-demodocos.png` | Chat (loaf, yeux blancs) | milieu-droite | pied de page (affiché ×1.5) |
 | `table-demodocos.png` | Table + 2 chaises + livre (libellé « Demodocos » retiré) | bas-gauche | **carte « Events » de l'accueil** (`index.html`, icône 54px de haut) + **page 404** (`404.html`, hors nav publique). |
 
-> **Carte de partage social** — `assets/og-card.jpg` (1200×630, JPEG). Ce n'est **pas** une
+> **Carte de partage social** — `assets/og-card-2.jpg` (1200×630, JPEG). Ce n'est **pas** une
 > illustration du moodboard : c'est un lockup **du logo principal** (le porteur de rame,
 > `oar-bearer.svg`) + le titre grec **« Δημόδοκος / Βιβλία » sur 2 lignes** (Playfair, grand),
 > sur le fond papier. Sous-titre latin et tagline **retirés** (texte trop petit, surtout sur
