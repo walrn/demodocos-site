@@ -159,8 +159,8 @@
   .eye-divider svg{width:46px;height:auto;color:var(--ink);opacity:.85}
 
   /* cartes */
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-    background:var(--line);border:1px solid var(--line)}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line)}   /* 4 cartes en 2×2 (descriptions longues : plus aéré qu'une rangée de 4) */
   .card{background:var(--paper);padding:clamp(28px,3.4vw,42px) clamp(22px,2.6vw,32px)}
   .section.wash .card{background:var(--wash)}
   .card .ic{width:52px;height:52px;color:var(--ink);margin-bottom:20px}

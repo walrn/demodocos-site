@@ -11,19 +11,19 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Demodocos Books">
 <meta property="og:url" content="https://demodocos-books.eu/">
-<meta property="og:title" content="Demodocos Books — Librairie & café à Ios, Cyclades">
-<meta property="og:description" content="Librairie & café indépendante à Ios (Cyclades, Grèce). Des livres en grec, anglais et français.">
+<meta property="og:title" content="Demodocos Books — Bookshop & café on Ios, Cyclades">
+<meta property="og:description" content="An independent bookshop & café on Ios (Cyclades, Greece). Books in Greek, English and French.">
 <meta property="og:image" content="https://demodocos-books.eu/assets/og-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Illustration au crayon bleu : une table et deux chaises avec un livre ouvert — Demodocos">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:image:alt" content="Demodocos Books logo: the oar-bearer figure in cobalt blue, beside the shop's name">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="fr_FR">
 <meta property="og:locale:alternate" content="el_GR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://demodocos-books.eu/">
-<meta name="twitter:title" content="Demodocos Books — Librairie & café à Ios, Cyclades">
-<meta name="twitter:description" content="Librairie & café indépendante à Ios (Cyclades, Grèce). Des livres en grec, anglais et français.">
+<meta name="twitter:title" content="Demodocos Books — Bookshop & café on Ios, Cyclades">
+<meta name="twitter:description" content="An independent bookshop & café on Ios (Cyclades, Greece). Books in Greek, English and French.">
 <meta name="twitter:image" content="https://demodocos-books.eu/assets/og-card.jpg">
 <script type="application/ld+json">
 {
@@ -146,6 +146,11 @@ const CONTENT = {
     el:"Ταξιδιωτικοί οδηγοί, σημειωματάρια και αναγνώσματα των νησιών του Αιγαίου για το ταξίδι προς τη δική σας Ιθάκη",
     en:"Travel guides, notebooks and Aegean readings for the journey towards your own Ithaka",
     fr:"Des livrets de voyage, des carnets de notes et des lectures égéennes pour vous accompagner vers vos propres Ithaques" },
+  card_events_t:  { el:"Εκδηλώσεις", en:"Events", fr:"Rendez-vous" },
+  card_events_b:  {
+    el:"Αναγνώσεις, συναντήσεις και μουσική — οι στιγμές που το βιβλιοπωλείο γεμίζει φωνές",
+    en:"Readings, encounters and music — the moments when the shop fills with voices",
+    fr:"Lectures, rencontres et musique — les moments où la librairie se remplit de voix" },
   card_more:      { el:"Δείτε περισσότερα", en:"See more", fr:"En savoir plus" },
 
   /* ----- Nous trouver ----- */
@@ -1024,6 +1029,11 @@ const DEFAULT_LANG = "en";
         <a class="card" href="road.html">
           <img class="ic" src="assets/lyre-demodocos.png" alt="" aria-hidden="true" width="220" height="242" style="width:auto;height:54px">
           <h3 data-i18n="card_island_t"></h3><p data-i18n="card_island_b"></p>
+          <span class="more" data-i18n="card_more"></span>
+        </a>
+        <a class="card" href="events.html">
+          <img class="ic" src="assets/table-demodocos.png" alt="" aria-hidden="true" width="460" height="366" style="width:auto;height:54px">
+          <h3 data-i18n="card_events_t"></h3><p data-i18n="card_events_b"></p>
           <span class="more" data-i18n="card_more"></span>
         </a>
       </div>
