@@ -33,10 +33,11 @@ habiller les pages.
 
 > **Carte de partage social** — `assets/og-card.jpg` (1200×630, JPEG). Ce n'est **pas** une
 > illustration du moodboard : c'est un lockup **du logo principal** (le porteur de rame,
-> `oar-bearer.svg`) + le nom « Δημόδοκος Βιβλία / Demodocos Books » et la tagline
-> « Bookshop & café · Ios, Cyclades », composé sur le fond papier. C'est l'image affichée
-> quand on partage un lien du site (balises `og:image` / `twitter:image` de toutes les pages).
-> Régénérée en dessinant la page dans un `<canvas>` (vraies polices) — voir l'historique Git.
+> `oar-bearer.svg`) + le titre grec **« Δημόδοκος / Βιβλία » sur 2 lignes** (Playfair, grand),
+> sur le fond papier. Sous-titre latin et tagline **retirés** (texte trop petit, surtout sur
+> mobile — demande de Christophe). C'est l'image affichée quand on partage un lien du site
+> (balises `og:image` / `twitter:image` de toutes les pages). Régénérée en dessinant la page
+> dans un `<canvas>` avec les vraies polices — voir l'historique Git.
 
 ## Conventions d'intégration
 
