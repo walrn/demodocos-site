@@ -33,12 +33,6 @@ Contexte complet, identité de marque et procédure de mise à jour du contenu :
   `<a class="card" href="…">` (vers `books.html` / `coffee.html` / `road.html`) avec le
   CTA « En savoir plus » (`<span class="more" data-i18n="card_more">`). Les sous-pages
   sont **indexables** (le `noindex` a été retiré).
-- **`preview.html` = page de test (bac à sable), `noindex`, hors navigation
-  publique.** Copie de l'accueil avec les liens des cartes **actifs** + repère
-  « PAGE DE TEST » ; sert à essayer de nouvelles propositions de design. Accès
-  par URL directe seulement (`/preview.html`). ⚠️ C'est une **copie** : si le
-  contenu de `index.html` change, `preview.html` diverge — resynchroniser au
-  besoin. Quand un design est validé, le porter dans `index.html`.
 - **Contenu = objet `CONTENT`** dans la `ZONE À MODIFIER`, propre à **chaque page**.
   Chaque entrée a trois langues `el` / `en` / `fr` : les modifier ensemble.
 - **Langue mémorisée** via `localStorage` (`site.js`) : le choix EL/EN/FR suit

@@ -47,8 +47,20 @@ l'utilisateur ; relecture Christophe encore souhaitable).
 Les deux bacs à sable restent : `preview.html` (Option A, bloc replié — non retenue) et
 `preview2.html` (Modale, = ce qui est en prod).
 
+### Nettoyage bacs à sable — 22/08/2026
+`preview.html` (Option A logo, non retenue) et `preview2.html` (Modale, devenue
+l'accueil) sont **supprimés** : plus aucune page ni `site.js`/`styles.css` ne les
+référençait (vérifié). Références documentaires corrigées en conséquence dans
+`CLAUDE.md`, `README.md` et `assets/ILLUSTRATIONS.md`.
+
 ## ⏳ À faire
 
+- [ ] **Mentions légales (`legal.html`) — en attente d'infos de Jean (🧊 au frigidaire,
+      pas urgent).** 3 placeholders `[ TO COMPLETE ]` dans le bloc anglais (section
+      « Publisher ») : n° de registre du commerce (GEMI), n° de TVA / ΑΦΜ, et nom du
+      représentant légal de « Agora & Demodocos Ios - Coffee & Books I.K.E. ». Ne pas
+      deviner ces valeurs — attendre que Jean les fournisse, puis répercuter dans les
+      3 blocs de langue si besoin.
 - [ ] **Grec — lot « style » (🟡) à appliquer si validé** (revue 12/07/2026). Fautes claires
       DÉJÀ corrigées en ligne (« Η λιβραρί »→« Το βιβλιοπωλείο » ; logo « θα του πρέπει »→
       « θα πρέπει » ; road *Island of Echoes* EL aligné → « …· το αφηγείται ένα παιδί του
@@ -73,16 +85,14 @@ Les deux bacs à sable restent : `preview.html` (Option A, bloc replié — non 
       « ne pas recadrer ») ou si on les garde telles quelles.
 - [ ] **Porter les styles scopés** de `books.html` / `road.html` / de la modale logo (dans
       `index.html`) vers `styles.css`.
-- [ ] **Nettoyer/resynchroniser les bacs à sable** : `index.html` = ex-`preview2` (modale).
-      `preview.html` (Option A non retenue) et `preview2.html` divergent — décider de les
-      resynchroniser sur le nouvel `index.html` ou de les supprimer.
 - [ ] (Option) CMS léger (Pages CMS) par-dessus les données si l'édition de fichier devient pénible.
 
 ## Repères
 - Workflow de réception d'un nouvel envoi → `work-local/README.md`.
 - Règles de contenu (dont archivage systématique des `inbox*`) → `work-local/RULES.md`.
-- Déploiement : `git push origin main` → GitHub Pages (~1 min). Tout est public sauf
-  `preview.html` et `preview2.html` (`noindex`).
+- Déploiement : `git push origin main` → GitHub Pages (~1 min). Plus de bac à sable
+  (`preview.html`/`preview2.html` supprimés) ; `legal.html` et `404.html` restent en
+  `noindex` (normal, pas des pages de contenu à indexer).
 - ⚠️ **GitHub Pages peut se bloquer** (build « building » figé des heures). Remède :
   pousser un **commit vide** (`git commit --allow-empty`) pour relancer un build.
   Vérifier le statut : `gh api repos/walrn/demodocos-site/pages/builds/latest`.

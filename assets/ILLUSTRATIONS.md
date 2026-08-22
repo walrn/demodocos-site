@@ -21,7 +21,7 @@ habiller les pages.
 
 ## Catalogue
 
-| Fichier | Élément | Position dans le moodboard | Utilisé dans `preview.html` |
+| Fichier | Élément | Position dans le moodboard | Utilisé dans |
 |---|---|---|---|
 | `oeil-demodocos.png` | Œil (courbe au-dessus, pupille blanche) | ligne 1, 2ᵉ depuis la gauche | séparateur `.eye-divider` |
 | `livre-demodocos.png` | Livre **ouvert au trait** (pages transparentes laissant voir le fond) | add-on, 1ᵉʳ depuis la gauche | carte « Books and Gifts » |
@@ -44,15 +44,14 @@ habiller les pages.
 - Insérées en `<img>` détouré, `aria-hidden="true"`, dimensionnées en **inline
   style** pour ne pas toucher au CSS partagé (`styles.css`) — ainsi `index.html`
   n'est pas impacté. Ex. icônes de carte : `style="width:auto;height:54px"`.
-- Pour l'instant elles ne vivent que dans **`preview.html`** (page de test
-  `noindex`). Quand un parti pris est validé, porter l'`<img>` + l'asset dans
-  `index.html` (et, le cas échéant, retirer le symbole SVG d'origine).
+- Elles vivent dans `index.html` (cartes d'accueil, séparateur, pied de page) et,
+  pour la table, aussi dans `404.html`.
 - La **tasse** de la carte « Coffee » est désormais une illustration dessinée
   (`tasse-demodocos.png`, croquis de la même main), en remplacement de l'ancien
   **SVG au trait** `#i-cup`. Image conservée avec sa **pleine vapeur** : la tasse
   elle-même rend donc plus petite que le livre et la lyre, ce qui est assumé (jugé
   visuellement cohérent). Icône à `height:54px` comme les autres → titres alignés.
-  Le symbole SVG `#i-cup` n'est plus référencé dans `preview.html`.
+  Le symbole SVG `#i-cup` n'est plus référencé.
 - Le **livre** a été remplacé : l'ancien livre bleu plein → le **livre ouvert au
   trait** de l'add-on. Ses pages sont transparentes (le fond papier/lavis passe au
   travers), ce qui s'intègre bien sur les cartes.
